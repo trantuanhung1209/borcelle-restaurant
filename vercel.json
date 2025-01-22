@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [
       {
-        "src": "/pages/home//",
+        "src": "index.html",
         "dest": "/data/$1"
       }
     ]
