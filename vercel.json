@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "routes": [
+      {
+        "src": "/pages/home/",
+        "dest": "/data/$1"
+      }
+    ]
+  }
