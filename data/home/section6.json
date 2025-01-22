@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "image": "../../assets/images/banner/banner1.png",
+        "description": "Món ăn đa dạng"
+    },
+    {
+        "id": 2,
+        "image": "../../assets/images/banner/banner2.png",
+        "description": "Hương vị đặc biệt"
+    },
+    {
+        "id": 3,
+        "image": "../../assets/images/banner/banner3.png",
+        "description": "Công thức độc quyền"
+    },
+    {
+        "id": 4,
+        "image": "../../assets/images/banner/banner4.png",
+        "description": "Đảm bảo chất lượng"
+    }
+]

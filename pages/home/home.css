@@ -1,0 +1,178 @@
+@import url('../../shared/css/variables.css');
+@import url('../../shared/css/style.css');
+
+.section-1 .text-animation {
+    white-space: nowrap;
+    animation: slideLeft 1.5s ease-out forwards;
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translate(-100%, -50%);
+    }
+    70% {
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.section-1 .slideIn {
+    animation: slideRight 1.5s ease-out forwards; /* Kích hoạt animation */
+    white-space: nowrap; /* Đảm bảo không ngắt dòng chữ */
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translate(100%, -50%);
+    }
+    70% {
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.section-1 .slide-butom {
+    animation: slideButtom 1.5s ease-out forwards;
+    white-space: nowrap;
+}
+
+@keyframes slideButtom {
+    0% {
+        transform: translate(0, -100%);
+    }
+    70% {
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.section-1 {
+    animation: wave 1s ease-out forwards;
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* section 2 */
+.button-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.button-block span {
+    transition: all 0.5s ease-in-out;
+}
+
+.button-block .button-line-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #d69c52;
+    width: 0;
+    display: inline-block;
+    height: 1px;
+    vertical-align: middle;
+    opacity: 0;
+    display: inline-block;
+}
+
+.button-block .button-line-right {
+    transform: scale(1);
+    opacity: 0;
+    background: #d69c52;
+    width: calc(30px - 1px);
+    display: inline-block;
+    height: 1px;
+    vertical-align: middle;
+    opacity: 1;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+.button-block:hover .button-line-left {
+    transform: translate(0, 0px);
+    width: 30px;
+    opacity: 1
+}
+
+.button-block:hover .button-line-right {
+    transform: scale(1);
+    opacity: 0;
+}
+
+.button-block:hover .button-text {
+    transform: translate(45px, 0px);
+}
+
+.section-2 .inner-image a {
+    display: block;
+}
+
+.section-2 .inner-image a img {
+    width: 100%;
+    height: 100%;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
+}
+
+.section-2 .inner-image a:hover img {
+    transform: scale(1);
+}
+/* end section 2 */
+
+/* section 6 */
+
+.section-6 .inner-banner .inner-content {
+    transition: all 0.5s ease-in-out;
+}
+
+.section-6 .inner-banner:hover .inner-content {
+    opacity: 1;
+}
+
+/* section 8 */
+.section-8 .articles {
+    cursor: pointer;
+}
+
+.section-8 .articles .inner-thumb img{
+    transition: all 0.5s ease-in-out;
+}
+
+.section-8 .articles:hover .inner-thumb img {
+    transform: scale(1);
+}
+/* end section 8 */
+
+/* section 9 */
+.section-9 {
+    background-image: url(../../assets/images/background/background_danhgia.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* end section 9 */

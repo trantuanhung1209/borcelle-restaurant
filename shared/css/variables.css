@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --font-title: 'Dancing Script', cursive;
+    --font-text: 'Quicksand', sans-serif;
+    --background-color-nav: #143b36a1;
+    --background-color-primary: #153b36;
+    --background-color-secondary: #11302c;
+    --background-color-button: #d69c52;
+    --background-color-button-hover: #c68f4bcb;
+}

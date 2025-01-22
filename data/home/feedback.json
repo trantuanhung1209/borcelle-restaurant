@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "image": "../../assets/images/avatar/Hung1.PNG",
+        "name": "Trần Tuấn Hưng",
+        "position": "Sinh viên",
+        "content": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Borcelle Restaurant"
+    },
+    {
+        "id": 2,
+        "image": "../../assets/images/avatar/avtatar-coHien.png",
+        "name": "Cô Xuân Hiền",
+        "position": "Giảng viên",
+        "content": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Borcelle Restaurant"
+    },
+    {
+        "id": 3,
+        "image": "../../assets/images/avatar/AHung.png",
+        "name": "Nguyễn Hùng",
+        "position": "Sinh viên",
+        "content": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Borcelle Restaurant"
+    }
+]

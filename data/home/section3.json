@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "image": "../../assets/images/category/cate_1.jpg",
+        "title": "Món bò",
+        "description": "Các món bò được chế biến tinh tế với hương vị đặc biệt nhất"
+    },
+    {
+        "id": 2,
+        "image": "../../assets/images/category/cate_2.jpg",
+        "title": "Món gà",
+        "description": "Các món gà được chế biến tinh tế với hương vị đặc biệt nhất"
+    },
+    {
+        "id": 3,
+        "image": "../../assets/images/category/cate_3.jpg",
+        "title": "Món heo",
+        "description": "Các món heo được chế biến tinh tế với hương vị đặc biệt nhất"
+    },
+    {
+        "id": 4,
+        "image": "../../assets/images/category/cate_4.jpg",
+        "title": "Món cá",
+        "description": "Các món cá được chế biến tinh tế với hương vị đặc biệt nhất"
+    },
+    {
+        "id": 5,
+        "image": "../../assets/images/category/cate_5.jpg",
+        "title": "Các món khác",
+        "description": "Các món ăn được chế biến tinh tế với hương vị đặc biệt nhất"
+    }
+]

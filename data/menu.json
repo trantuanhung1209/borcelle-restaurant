@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Trang chủ",
+        "link": "../../pages/home/"
+    },
+    {
+        "title": "Giới thiệu",
+        "link": "../../pages/about/"
+    },
+    {
+        "title": "Menu",
+        "link": "../../pages/menu/"
+    },
+    {
+        "title": "Món ăn nổi bật",
+        "link": "../../pages/topDishes/"
+    },
+    {
+        "title": "Tin tức",
+        "link": "../../pages/news/"
+    },
+    {
+        "title": "Liên hệ",
+        "link": "../../pages/contact/"
+    }
+]

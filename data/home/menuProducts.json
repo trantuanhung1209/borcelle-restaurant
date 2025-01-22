@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Khai vị",
+        "tag": "appetizer"
+    },
+    {
+        "title": "Món chính",
+        "tag": "mainCourse"
+    },
+    {
+        "title": "Canh-Tiềm-Sup",
+        "tag": "soup"
+    },
+    {
+        "title": "Cơm-Mì-Cháo",
+        "tag": "riceAndNoodles"
+    },
+    {
+        "title": "Tráng miệng",
+        "tag": "dessert"
+    },
+    {
+        "title": "Đồ uống",
+        "tag": "beverage"
+    }
+]
