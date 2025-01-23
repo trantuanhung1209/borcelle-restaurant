@@ -43,7 +43,7 @@ const section2 = () => {
                     khách hàng những trãi nghiệm tuyệt với nhất. Các món ăn với công thức độc quyền sẽ mang
                     lại hương vị mới mẻ cho thực khách. Dola Restaurant xin chân thành cảm ơn.
                 </p>
-                <a href="#">
+                <a href="../about/">
                     <div class="button-block cursor-pointer">
                         <span class="button-line-left bg-button w-[29px] h-[1px] mr-[15px]"></span>
                         <span class="button-text text-button">Xem thêm </span>
@@ -450,47 +450,107 @@ section6();
 
 // --------------section 7
 // Lấy tất cả các số cần tăng
-const counters = document.querySelectorAll('.section-7 .content h3');
+const section7 = () => {
+    const section7Element = mainElement.querySelector('.section-7');
+    const section7Template = `
+    <div class="container mx-auto">
+        <div class="inner-wrap grid grid-cols-4">
+            <div
+                class="inner-item flex items-center justify-center gap-[20px] px-[15px] border-r-[1px] border-[#797979]">
+                <img src="../../assets/images/statistics/thong_ke1.png" alt="num" loading="lazy"
+                    class="w-[64px] h-[64px]">
+                <div class="content">
+                    <div class="flex gap-[5px] items-center">
+                        <h3 class="text-[48px] font-[500] text-white">8</h3>
+                        <span class="text-[48px] font-[500] text-white">+</span>
+                    </div>
+                    <p class="text-[18px] text-white">Cửa hàng</p>
+                </div>
+            </div>
+            <div
+                class="inner-item flex items-center justify-center gap-[20px] px-[15px] border-r-[1px] border-[#797979]">
+                <img src="../../assets/images/statistics/thong_ke2.png" alt="num" loading="lazy"
+                    class="w-[64px] h-[64px]">
+                <div class="content">
+                    <div class="flex gap-[5px] items-center">
+                        <h3 class="text-[48px] font-[500] text-white">200</h3>
+                        <span class="text-[48px] font-[500] text-white">+</span>
+                    </div>
+                    <p class="text-[18px] text-white">Nhân viên</p>
+                </div>
+            </div>
+            <div
+                class="inner-item flex items-center justify-center gap-[20px] px-[15px] border-r-[1px] border-[#797979]">
+                <img src="../../assets/images/statistics/thong_ke3.png" alt="num" loading="lazy"
+                    class="w-[64px] h-[64px]">
+                <div class="content">
+                    <div class="flex gap-[5px] items-center">
+                        <h3 class="text-[48px] font-[500] text-white">5000</h3>
+                        <span class="text-[48px] font-[500] text-white">+</span>
+                    </div>
+                    <p class="text-[18px] text-white">Khách hàng</p>
+                </div>
+            </div>
+            <div class="inner-item flex items-center justify-center gap-[20px] px-[15px]">
+                <img src="../../assets/images/statistics/thong_ke4.png" alt="num" loading="lazy"
+                    class="w-[64px] h-[64px]">
+                <div class="content">
+                    <div class="flex gap-[5px] items-center">
+                        <h3 class="text-[48px] font-[500] text-white">50</h3>
+                        <span class="text-[48px] font-[500] text-white">+</span>
+                    </div>
+                    <p class="text-[18px] text-white">Món ăn</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    if (section7Element) {
+        section7Element.innerHTML = section7Template;
+        const counters = document.querySelectorAll('.section-7 .content h3');
 
-// Hàm tăng số dần dần
-function animateCounter(element, target) {
-    const duration = 1000; // Thời gian hoàn thành (ms)
-    const increment = Math.ceil(target / (duration / 10)); // Bước tăng
-    let current = 0;
+        // Hàm tăng số dần dần
+        function animateCounter(element, target) {
+            const duration = 1000; // Thời gian hoàn thành (ms)
+            const increment = Math.ceil(target / (duration / 10)); // Bước tăng
+            let current = 0;
 
-    const updateCounter = () => {
-        current += increment;
-        if (current > target) {
-            element.textContent = target; // Đảm bảo không vượt quá số mục tiêu
-        } else {
-            element.textContent = current;
-            requestAnimationFrame(updateCounter); // Tiếp tục cập nhật
+            const updateCounter = () => {
+                current += increment;
+                if (current > target) {
+                    element.textContent = target; // Đảm bảo không vượt quá số mục tiêu
+                } else {
+                    element.textContent = current;
+                    requestAnimationFrame(updateCounter); // Tiếp tục cập nhật
+                }
+            };
+
+            updateCounter();
         }
-    };
 
-    updateCounter();
-}
-
-// Sử dụng Intersection Observer để phát hiện khi cuộn đến `section-7`
-const section7 = document.querySelector('.section-7');
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Khi section-7 vào viewport, chạy hiệu ứng tăng số
-            counters.forEach(counter => {
-                const target = parseInt(counter.textContent.replace(/[^\d]/g, '')); // Lấy số mục tiêu
-                animateCounter(counter, target);
+        // Sử dụng Intersection Observer để phát hiện khi cuộn đến `section-7`
+        const section7 = document.querySelector('.section-7');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Khi section-7 vào viewport, chạy hiệu ứng tăng số
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent.replace(/[^\d]/g, '')); // Lấy số mục tiêu
+                        animateCounter(counter, target);
+                    });
+                    observer.unobserve(section7); // Ngừng quan sát sau khi đã chạy hiệu ứng
+                }
             });
-            observer.unobserve(section7); // Ngừng quan sát sau khi đã chạy hiệu ứng
-        }
-    });
-}, {
-    root: null, // Quan sát viewport
-    threshold: 0.5 // Ít nhất 50% section hiển thị mới kích hoạt
-});
+        }, {
+            root: null, // Quan sát viewport
+            threshold: 0.5 // Ít nhất 50% section hiển thị mới kích hoạt
+        });
 
-// Bắt đầu quan sát section-7
-observer.observe(section7);
+        // Bắt đầu quan sát section-7
+        observer.observe(section7);
+    }
+}
+section7();
 // -----------end section 7
 
 // --------------section 8
