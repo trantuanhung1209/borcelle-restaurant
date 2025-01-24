@@ -1,7 +1,14 @@
 const mainElement = document.querySelector('.main');
+const url = new URL(window.location.href);
+const id = url.searchParams.get('id');
+const idFinal = parseInt(id);
 
 // ------------breadcumb----------------
-const breadCumb = () => {
+const breadCumb = async () => {
+    const response = await fetch('../../data/home/articles.json');
+    const data = await response.json();
+    const dataItem = data.find(item => item.id === idFinal);
+
     const breadCumbElement = mainElement.querySelector('.inner-breadcumb');
     const breadCumbTemplate = `
     <div class="container ">
@@ -13,7 +20,13 @@ const breadCumb = () => {
                 <i class="fas fa-angle-right"></i>
             </li>
             <li>
-                <a href="index.html" style="color: var(--background-color-button);">Tin tức</a>
+                <a href="../news/">Tin tức</a>
+            </li>
+            <li>
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#" style="color: var(--background-color-button);">${dataItem.title}</a>
             </li>
         </ul>
     </div>
@@ -79,70 +92,35 @@ innerLeft();
 const innerRight = async () => {
     const response = await fetch('../../data/home/articles.json');
     const data = await response.json();
+    const dataItem = data.find(item => item.id === idFinal);
 
     const innerRightElement = mainElement.querySelector('.inner-right');
     const innerRightTemplate = `
-    <h2 class="inner-title">
-        <a href="#">
-            Tin tức
-        </a>
-    </h2>
-
-    <div class="inner-list-article row">
-        ${data.map(item => `
-        <div class="inner-item col-4 mb-4" id=${item.id}>
-            <div class="inner-blog">
-                <div class="inner-thumb">
-                    <a href="../article/" title=${item.title}>
-                        <img src=${item.image} alt=${item.title}>
-                    </a>
-                    <div class="inner-date">
-                        ${item.date}
-                    </div>
-                </div>
-                <div class="inner-content">
-                    <div class="inner-author">
-                        <span>Đăng bởi: Admin Hune</span>
-                    </div>
-                    <h3 >
-                        <a class="line-clamp line-clamp-2" href="../article/" title=${item.title}>
-                            ${item.title}
-                        </a>
-                    </h3>
-                    <p class="justify line-clamp line-clamp-2">
-                        ${item.description}
-                    </p>
-                    <a href="../article/" class="inner-readmore" title="xem thêm">
-                        <div class="button-block">
-                            <span class="button-line-left"></span>
-                            <span class="button-text">Xem Thêm</span>
-                            <span class="button-line-right"></span>
-                        </div>
-                    </a>
-                </div>
+    <div class="inner-article">
+        <h2 class="inner-title">
+            ${dataItem.title}
+        </h2>
+        <div class="inner-info">
+            <div class="inner-date">
+                <i class="fa-regular fa-clock"></i> 
+                ${dataItem.date}
+            </div>
+            <div class="inner-author">
+                <i class="fa-solid fa-user"></i>
+                Admin Hune
             </div>
         </div>
-        `).join('')}
+        <p class="inner-description">
+            ${dataItem.description}
+        </p>
+        <div class="inner-thumb">
+            <img src=${dataItem.image} alt=${dataItem.title}>
+        </div>
     </div>
     `;
+
     if (innerRightElement) {
         innerRightElement.innerHTML = innerRightTemplate;
-
-        const innerListArticleElement = innerRightElement.querySelector('.inner-list-article');
-        const innerItemElement = innerRightElement.querySelectorAll('.inner-item');
-        innerListArticleElement.addEventListener('click', (e) => {
-            e.preventDefault();
-            const innerItemElement = e.target.closest('.inner-item');
-            if (innerItemElement) {
-                const idTag = innerItemElement.id;
-                const id = parseInt(idTag);
-                const dataItem = data.find(item => item.id === id);
-                if (dataItem) {
-                    window.location.href = `../article/?id=${dataItem.id}`;
-                }
-            }
-        });
     }
 }
 innerRight();
-// ------------end inner-right----------------

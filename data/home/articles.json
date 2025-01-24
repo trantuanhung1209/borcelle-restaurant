@@ -26,5 +26,12 @@
         "date": "11/11/2024",
         "title": "1001 món ngon mỗi ngày - Giải quyết vấn đề “Hôm nay ăn gì?” một cách dễ dàng",
         "description": "Bữa sáng là một trong những bữa ăn quan trọng trong ngày, giúp cung cấp năng lượng cho một ngày dài học tập và làm việc. Một số món ăn sáng thơm ngon, hấp dẫn nhưng khá đơn giản mà bạn có thể chuẩn bị tại nhà như:"
+    },
+    {
+        "id": 5,
+        "image": "../../assets/images/articles/cach-lam-ga-u-muoi-hoa-tieu-01-9606.jpg",
+        "date": "11/12/2024",
+        "title": "Cách làm gà ủ muối hoa tiêu thơm ngon đúng vị cho ngày cuối tuần",
+        "description": "Gà ủ muối có nhiều cách làm khác nhau, tùy vào tay mỗi đầu bếp, tuy nhiên, đối với những người lần đầu vào bếp làm món này, chúng ta nên chọn cách làm đơn giản nhất, vừa đảm bảo được hương vị lại vừa tiết kiệm thời gian."
     }
 ]

@@ -340,7 +340,7 @@ const section5 = async () => {
                             </a>
                             <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
                                 <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] ">
-                                    <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-[#ff0000d1]"></i>
+                                    <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
                                 </a>
                                 <a href="#"
                                     class="add-to-wishlist block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
@@ -449,7 +449,6 @@ section6();
 // -----------------end section 6
 
 // --------------section 7
-// Lấy tất cả các số cần tăng
 const section7 = () => {
     const section7Element = mainElement.querySelector('.section-7');
     const section7Template = `
@@ -576,7 +575,7 @@ const section8 = async () => {
 
             <div class="carousel carousel-center rounded-box max-w-full space-x-4 p-4 gap-[24px]" id="myCarousel-3">
                 ${dataSection8.map(item => `
-                <div class="carousel-item articles bg-black rounded-[8px] overflow-hidden w-[425px]">
+                <div class="carousel-item articles bg-black rounded-[8px] overflow-hidden w-[425px]" id=${item.id}>
                     <div class="block flex flex-col">
                         <div class="inner-thumb bg-[#231f20] w-[425px] h-[255px] relative ${item.id % 2 != 0 ? 'order-1' : 'order-2'}">
                             <img src=${item.image} alt=${item.title} loading="lazy" class="w-full h-full scale-[0.9]">
@@ -589,12 +588,12 @@ const section8 = async () => {
                                 <span>Đăng bởi: Admin Hune</span>
                             </div>
                             <h3 class="line-clamp-2 text-[20px] font-[700] mb-[20px] text-white hover:text-button">
-                                <a href="../news/index.html">${item.title}</a>
+                                <a href="../article/index.html?id=${item.id}">${item.title}</a>
                             </h3>
                             <p class="line-clamp-2 text-[16px] text-[#d0d0d0]">
                                 ${item.description}
                             </p>
-                            <a href="../news/index.html"
+                            <a href="../article/index.html?id=${item.id}"
                                 class=" block pb-[20px] mt-[20px] pt-[20px] border-t-[1px] border-white">
                                 <div class="button-block cursor-pointer">
                                     <span class="button-line-left bg-button w-[29px] h-[1px] mr-[15px]"></span>
@@ -643,6 +642,15 @@ const section8 = async () => {
                     })
                 })
             }
+
+            // Xử lý link xem thêm
+            const listArticles = document.querySelectorAll('.section-8 .articles');
+            listArticles.forEach(article => {
+                article.addEventListener('click', () => {
+                    const idTag = article.getAttribute('id');
+                    window.location.href = `../article/index.html?id=${idTag}`;
+                });
+            });
         }
 
     } catch (error) {

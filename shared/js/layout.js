@@ -91,7 +91,7 @@ const footer = () => {
                     <p>
                         Nhà hàng chúng tôi luôn luôn đặt khách hàng lên hàng đầu, tận tâm phục vụ, mang lại cho
                         khách hàng những trãi nghiệm tuyệt với nhất. Các món ăn với công thức độc quyền sẽ mang lại
-                        hương vị mới mẻ cho thực khách. Dola Restaurant xin chân thành cảm ơn.
+                        hương vị mới mẻ cho thực khách. Borcelle Restaurant xin chân thành cảm ơn.
                     </p>
                     <h3 class="font-[700] text-[16px]">
                         Cửa hàng chính

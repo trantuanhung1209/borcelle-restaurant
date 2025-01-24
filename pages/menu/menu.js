@@ -1,36 +1,50 @@
 const mainElement = document.querySelector('.main');
 
 // ----------inner-right----------
+const removeDuplicateProducts = (products) => {
+    const seen = new Set(); // Tập hợp các tên sản phẩm đã gặp
+    return products.filter(product => {
+        if (seen.has(product.name)) {
+            return false; // Bỏ qua sản phẩm nếu tên đã tồn tại
+        }
+        seen.add(product.name); // Thêm tên vào danh sách đã gặp
+        return true; // Giữ sản phẩm
+    });
+};
+
 const sortByType = (dataProduct, type) => {
+    const copiedData = [...dataProduct]; 
+    const dataFinal = removeDuplicateProducts(copiedData);
     switch (type) {
         case 'default':
-            return dataProduct.sort((a, b) => a.id - b.id);
+            return dataFinal.sort((a, b) => a.id - b.id);
         case 'a-z':
-            return dataProduct.sort((a, b) => a.name.localeCompare(b.name));
+            return dataFinal.sort((a, b) => a.name.localeCompare(b.name));
         case 'z-a':
-            return dataProduct.sort((a, b) => b.name.localeCompare(a.name));
+            return dataFinal.sort((a, b) => b.name.localeCompare(a.name));
         case 'price-up':
-            return dataProduct.sort((a, b) => a.price - b.price);
+            return dataFinal.sort((a, b) => a.price - b.price);
         case 'price-down':
-            return dataProduct.sort((a, b) => b.price - a.price);
+            return dataFinal.sort((a, b) => b.price - a.price);
         case 'under100':
-            return dataProduct.filter(item => item.price < 100000);
+            return dataFinal.filter(item => item.price < 100000);
         case 'from100to200':
-            return dataProduct.filter(item => item.price >= 100000 && item.price < 200000);
+            return dataFinal.filter(item => item.price >= 100000 && item.price < 200000);
         case 'from200to500':
-            return dataProduct.filter(item => item.price >= 200000 && item.price < 500000);
+            return dataFinal.filter(item => item.price >= 200000 && item.price < 500000);
         case 'from500to1000':
-            return dataProduct.filter(item => item.price >= 500000 && item.price < 1000000);
+            return dataFinal.filter(item => item.price >= 500000 && item.price < 1000000);
         case 'over1000':
-            return dataProduct.filter(item => item.price >= 1000000);
+            return dataFinal.filter(item => item.price >= 1000000);
         default: 
-            return [];
+            return []; // Trả về bản sao nếu không có loại phù hợp
     }
 }
 
 const innerProductHtml = (dataProduct) => {
+    const dataFinal = removeDuplicateProducts(dataProduct.products);
     return `
-    ${dataProduct.products.map(item => `
+    ${dataFinal.map(item => `
         <div class="inner-product-item">
             <div class="inner-image">
                 <a href="#">
@@ -59,11 +73,11 @@ const innerProductHtml = (dataProduct) => {
                 </h3>
                 <div class="inner-price">
                     <div class="inner-new-price">
-                        ${item.price}₫
+                        ${item.price.toLocaleString()}₫
                     </div>
                     ${item.originalPrice? `
                         <div class="inner-old-price">
-                            ${item.originalPrice}₫
+                            ${item.originalPrice.toLocaleString()}₫
                         </div>
                     ` : ``}
                 </div>
@@ -383,6 +397,18 @@ const innerLeft = async () => {
                 } else {
                     const liElement = ulElement.querySelector(`.inner-selection ul li `);
                     ulElement.removeChild(liElement);
+                }
+
+                const listLiElement = ulElement.querySelectorAll('li');
+                if (listLiElement.length > 0) {
+                    listLiElement.forEach(item2 => {
+                        item2.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            item2.remove();
+                            item.checked = false;
+                            listProduct.innerHTML = innerProductHtml({products: dataProduct});
+                        });
+                    });
                 }
             });
         });

@@ -1,0 +1,154 @@
+@import url('../../shared/css/variables.css');
+@import url('../../shared/css/style.css');
+
+.main {
+    font-family: var(--font-text);
+    margin-top: -100px;
+    padding-top: 100px;
+    background-color: var(--background-color-primary);
+    padding-bottom: 40px;
+}
+
+.inner-breadcumb {
+    color: white;
+    background-color: #071513;
+}
+
+.inner-breadcumb ul li a {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.inner-blog {
+    border: 1px solid var(--background-color-button);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.inner-blog .inner-title {
+    background-color: var(--background-color-button);
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.inner-blog .inner-title a {
+    color: white;
+}
+
+.inner-blog .inner-title a:hover {
+    color: rgba(227, 227, 180, 0.724);
+}
+
+.inner-content {
+    padding: 8px 20px;
+}
+
+.inner-content .inner-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid white;
+}
+
+.inner-content .inner-item:last-child {
+    border-bottom: none;
+}
+
+.inner-content .inner-item .inner-thumb {
+    width: 40%;
+    height: 60px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.inner-text {
+    width: 60%;
+}
+
+.inner-text a {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+
+    &:hover {
+        color: rgba(227, 227, 180, 0.724);
+    }
+}
+
+.inner-article {
+
+    .inner-title {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .inner-info {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .inner-date {
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+
+            i {
+                color: var(--background-color-button);
+                font-size: 16px;
+            }
+        }
+
+        .inner-author {
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+
+            i {
+                color: var(--background-color-button);
+                font-size: 16px;
+            }
+        }
+    }
+
+    .inner-description {
+        font-size: 28px;
+        font-weight: 400;
+        color: white;
+        margin-bottom: 20px;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    .inner-thumb {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
