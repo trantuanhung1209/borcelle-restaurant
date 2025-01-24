@@ -33,6 +33,7 @@ const breadCumb = async () => {
     `;
 
     breadCumbElement.innerHTML = breadCumbTemplate;
+    document.querySelector('title').textContent = dataItem.title;
 }
 breadCumb();
 // ------------end breadcumb----------------
