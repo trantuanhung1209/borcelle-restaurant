@@ -55,12 +55,12 @@ const innerLeft = async () => {
             ${data.map(item => `
             <div class="inner-item" id=${item.id}>
                 <div class="inner-thumb">
-                    <a href="#" title=${item.title}>
-                        <img src=${item.image} alt=${item.title}>
+                    <a href="#" title='${item.title}'>
+                        <img src=${item.image} alt='${item.title}'>
                     </a>
                 </div>
                 <div class="inner-text">
-                    <a href="../article/">${item.title}</a>
+                    <a href="../article/?id=${item.id}">${item.title}</a>
                 </div>
             </div>
             `).join('')}
@@ -71,19 +71,19 @@ const innerLeft = async () => {
     if (innerLeftElement) {
         innerLeftElement.innerHTML = innerLeftTemplate;
 
-        const innerBlogElement = innerLeftElement.querySelector('.inner-blog');
-        innerBlogElement.addEventListener('click', (e) => {
-            e.preventDefault();
-            const innerItemElement = e.target.closest('.inner-item');
-            if (innerItemElement) {
-                const idTag = innerItemElement.id;
-                const id = parseInt(idTag);
-                const dataItem = data.find(item => item.id === id);
-                if (dataItem) {
-                    window.location.href = `../article/?id=${dataItem.id}`;
-                }
-            }
-        });
+        // const innerBlogElement = innerLeftElement.querySelector('.inner-blog');
+        // innerBlogElement.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     const innerItemElement = e.target.closest('.inner-item');
+        //     if (innerItemElement) {
+        //         const idTag = innerItemElement.id;
+        //         const id = parseInt(idTag);
+        //         const dataItem = data.find(item => item.id === id);
+        //         if (dataItem) {
+        //             window.location.href = `../article/?id=${dataItem.id}`;
+        //         }
+        //     }
+        // });
     }
 }
 innerLeft();
@@ -115,7 +115,7 @@ const innerRight = async () => {
             ${dataItem.description}
         </p>
         <div class="inner-thumb">
-            <img src=${dataItem.image} alt=${dataItem.title}>
+            <img src=${dataItem.image} alt='${dataItem.title}'>
         </div>
     </div>
     `;

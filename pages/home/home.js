@@ -41,7 +41,7 @@ const section2 = () => {
                 <p class="my-[20px] text-[16px] font-[300] text-white">
                     Nhà hàng chúng tôi luôn luôn đặt khách hàng lên hàng đầu, tận tâm phục vụ, mang lại cho
                     khách hàng những trãi nghiệm tuyệt với nhất. Các món ăn với công thức độc quyền sẽ mang
-                    lại hương vị mới mẻ cho thực khách. Dola Restaurant xin chân thành cảm ơn.
+                    lại hương vị mới mẻ cho thực khách. Borcelle Restaurant xin chân thành cảm ơn.
                 </p>
                 <a href="../about/">
                     <div class="button-block cursor-pointer">
@@ -91,9 +91,9 @@ const section3 = async () => {
                     <a href="#"
                         class="block p-[10px] ease-linear duration-200 hover:border-[1px] hover:border-button hover:rounded-[8px]">
                         <div class="flex justify-center items-center">
-                            <img src=${item.image} alt=${item.title} loading="lazy">
+                            <img src=${item.image} alt='${item.title}' loading="lazy">
                         </div>
-                        <h4 class="text-[26px] text-white mt-[20px] mb-[5px] text-center">
+                        <h4 class="text-[26px] text-white mt-[20px] mb-[5px] text-center" title='${item.title}'>
                             ${item.title}
                         </h4>
                         <p class="text-[16px] font-[300] text-white text-center">
@@ -194,10 +194,10 @@ const section4 = async () => {
 
             <div class="list-products grid grid-cols-5 gap-x-[20px] gap-y-[40px] wrap">
                 ${dataProductSection4.products.splice(0, 10).map(item => `
-                    <div class="product-item px-[7px] pt-[7px] pb-[45px] bg-white" style="box-shadow: 5px 10px #888888;">
+                    <div class="product-item px-[7px] pt-[7px] pb-[45px] bg-white" style="box-shadow: 5px 10px #888888;" id=${item.id}>
                         <div class="thumbnail relative">
-                            <a href="#" class="block flex items-center justify-center">
-                                <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy">
+                            <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
+                                <img src="${item.image}" alt='${item.name}' class="w-full h-full object-cover" loading="lazy">
                             </a>
                             <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
                                 <!-- Nút thêm vào giỏ hàng -->
@@ -217,7 +217,7 @@ const section4 = async () => {
                         </div>
                         <div class="product-info text-center p-[10px] relative bg-white">
                             <h3 class="product-name mb-[10px]">
-                                <a href="#" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
+                                <a href="../dishDetails/?id=${item.id}" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
                                     ${item.name}
                                 </a>
                             </h3>
@@ -225,7 +225,7 @@ const section4 = async () => {
                                 <span class="text-[18px] text-[#d83a3a] font-[600]">${item.price.toLocaleString()}₫</span>
                                 ${item.old_price ? `<span class="text-[12px] text-[#969696] font-[500] line-through">${item.old_price.toLocaleString()}₫</span>` : ''}
                             </div>
-                            <a href="#" class="button absolute top-[123%] right-[26%]">
+                            <a href="../dishDetails/?id=${item.id}" class="button absolute top-[123%] right-[26%]">
                                 Xem chi tiết
                             </a>
                         </div>
@@ -258,8 +258,8 @@ const section4 = async () => {
                                 listItem.push(`
                                 <div class="product-item px-[7px] pt-[7px] pb-[45px] bg-white" style="box-shadow: 5px 10px #888888;">
                                     <div class="thumbnail relative">
-                                        <a href="#" class="block flex items-center justify-center">
-                                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy">
+                                        <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
+                                            <img src="${item.image}" alt='${item.name}' class="w-full h-full object-cover" loading="lazy">
                                         </a>
                                         <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
                                             <!-- Nút thêm vào giỏ hàng -->
@@ -279,7 +279,7 @@ const section4 = async () => {
                                     </div>
                                     <div class="product-info text-center p-[10px] relative bg-white">
                                         <h3 class="product-name mb-[10px]">
-                                            <a href="#" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
+                                            <a href="../dishDetails/?id=${item.id}" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
                                                 ${item.name}
                                             </a>
                                         </h3>
@@ -287,7 +287,7 @@ const section4 = async () => {
                                             <span class="text-[18px] text-[#d83a3a] font-[600]">${item.price.toLocaleString()}₫</span>
                                             ${item.old_price ? `<span class="text-[12px] text-[#969696] font-[500] line-through">${item.old_price.toLocaleString()}₫</span>` : ''}
                                         </div>
-                                        <a href="#" class="button absolute top-[123%] right-[26%]">
+                                        <a href="../dishDetails/?id=${item.id}" class="button absolute top-[123%] right-[26%]">
                                             Xem chi tiết
                                         </a>
                                     </div>
@@ -335,8 +335,8 @@ const section5 = async () => {
                 <div class="carousel-item w-[20%] h-[400px]">
                     <div class="product-item px-[7px] pt-[7px] pb-[45px] bg-white" style="box-shadow: 5px 10px #888888;" id=${item.id}>
                         <div class="thumbnail relative">
-                            <a href="#" class="block flex items-center justify-center">
-                                <img src=${item.image} alt=${item.name} class="w-full h-ful object-cover" loading="lazy">
+                            <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
+                                <img src=${item.image} alt='${item.name}' class="w-full h-ful object-cover" loading="lazy">
                             </a>
                             <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
                                 <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] ">
@@ -350,7 +350,7 @@ const section5 = async () => {
                         </div>
                         <div class="product-info text-center p-[10px] relative bg-white">
                             <h3 class="product-name mb-[10px]">
-                                <a href="#" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
+                                <a href="../dishDetails/?id=${item.id}" class="text-[16px] font-[700] line-clamp-1 text-black hover:text-button">
                                     ${item.name}
                                 </a>
                             </h3>
@@ -358,7 +358,7 @@ const section5 = async () => {
                                 <span class="text-[18px] text-[#d83a3a] font-[600]">${item.price.toLocaleString()}₫</span>
                                 ${item.old_price ? `<span class="text-[12px] text-[#969696] font-[500] line-through">${item.old_price.toLocaleString()}₫</span>` : ''}
                             </div>
-                            <a href="#" class="button absolute top-[123%] right-[26%]">
+                            <a href="../dishDetails/?id=${item.id}" class="button absolute top-[123%] right-[26%]">
                                 Xem chi tiết
                             </a>
                         </div>
@@ -578,7 +578,7 @@ const section8 = async () => {
                 <div class="carousel-item articles bg-black rounded-[8px] overflow-hidden w-[425px]" id=${item.id}>
                     <div class="block flex flex-col">
                         <div class="inner-thumb bg-[#231f20] w-[425px] h-[255px] relative ${item.id % 2 != 0 ? 'order-1' : 'order-2'}">
-                            <img src=${item.image} alt=${item.title} loading="lazy" class="w-full h-full scale-[0.9]">
+                            <img src=${item.image} alt='${item.title}' loading="lazy" class="w-full h-full scale-[0.9]">
                             <p class="px-[15px] py-[5px] text-center bg-button rounded-[8px] absolute top-[20px] left-[20px] text-white">
                                 ${item.date}
                             </p>
@@ -674,7 +674,7 @@ const section9 = async () => {
                 <div class="carousel-item flex flex-col gap-[30px] articles bg-secondary rounded-[8px] overflow-hidden w-[553px] p-[45px] item-1">
                     <div class="block flex items-center gap-[15px]">
                         <div class="inner-avatar w-[80px] h-[80px] rounded-full overflow-hidden">
-                            <img src=${item.image} alt=${item.name} loading="lazy" class="w-full h-full object-cover">
+                            <img src=${item.image} alt='${item.name}' loading="lazy" class="w-full h-full object-cover">
                         </div>
                         <div class="inner-info">
                             <h3 class="inner-name text-[26px] text-white mb-[10px] capitalize">

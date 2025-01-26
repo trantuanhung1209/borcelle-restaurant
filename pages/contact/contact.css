@@ -1,2 +1,183 @@
 @import url('../../shared/css/variables.css');
 @import url('../../shared/css/style.css');
+
+.main {
+    font-family: var(--font-text);
+    margin-top: -100px;
+    padding-top: 100px;
+    background-color: var(--background-color-primary);
+    padding-bottom: 40px;
+}
+
+.inner-breadcumb {
+    color: white;
+    background-color: #071513;
+}
+
+.inner-breadcumb ul li a {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.section-1 {
+
+    .inner-title {
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: white;
+        padding: 10px 18px;
+        background-color: var(--background-color-button);
+        border-radius: 8px 8px 0 0;
+    }
+
+    .inner-info {
+        color: white;
+        border: 1px solid var(--background-color-button);
+        border-radius: 8px;
+        padding: 10px 16px;
+
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .inner-address {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+
+            p span {
+                color: var(--background-color-button);
+            }
+        }
+    }
+
+    .inner-form {
+        border: 1px solid var(--background-color-button);
+        border-radius: 8px;
+        padding: 10px 16px;
+
+        .inner-form-group {
+            width: 100%;
+
+            input {
+                width: 100%;
+                padding: 5px 20px;
+                margin-bottom: 10px;
+                border: 1px solid var(--background-color-button);
+                border-radius: 8px;
+                outline: transparent;
+            }
+            textarea {
+                width: 100%;
+                padding: 10px 20px;
+                margin-bottom: 10px;
+                border: 1px solid var(--background-color-button);
+                border-radius: 8px;
+                outline: transparent;
+            }
+        }
+        .inner-button {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            background-color: var(--background-color-button);
+            border: none;
+            border-radius: 8px;
+            padding: 6px 20px;
+        }
+    }
+}
+
+.section-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+
+    .inner-popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 8px;
+        width: 500px;
+        overflow: hidden;
+
+        .inner-popup-content {
+
+            .inner-popup-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                padding: 5px 20px;
+                background-color: var(--background-color-button);
+                color: white;
+
+                h3 {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+
+                .inner-popup-close {
+                    font-size: 20px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    border: none;
+                    background-color: transparent;
+                    color: white;
+                }
+            }
+
+            .inner-popup-body {
+                padding: 20px;
+
+                p {
+                    font-size: 16px;
+                    font-weight: 400;
+                    margin-bottom: 20px;
+                }
+
+                .inner-info {
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+
+                    p span {
+                        color: var(--background-color-button);
+                    }
+                }
+
+                .inner-action {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .inner-button {
+                        font-size: 14px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        color: white;
+                        background-color: var(--background-color-button);
+                        border: none;
+                        border-radius: 8px;
+                        padding: 5px 20px;
+                    }
+                }
+            }
+        }
+    }
+}

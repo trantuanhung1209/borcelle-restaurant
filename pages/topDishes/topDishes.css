@@ -392,7 +392,7 @@
                 };
 
                 .inner-button {
-                    padding: 0 15px;
+                    padding: 8px 15px;
                     font-size: 14px;
                     box-shadow: 0 3px #a37b44;
                     background-color: var(--background-color-button);

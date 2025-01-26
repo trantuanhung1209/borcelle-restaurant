@@ -47,8 +47,8 @@ const innerProductHtml = (dataProduct) => {
     ${dataTopDishes.map(item => `
         <div class="inner-product-item">
             <div class="inner-image">
-                <a href="#">
-                    <img src=${item.image} alt=${item.name}>
+                <a href="../dishDetails/?id=${item.id}">
+                    <img src=${item.image} alt='${item.name}'>
                 </a>
 
                 <div class="inner-action">
@@ -67,7 +67,7 @@ const innerProductHtml = (dataProduct) => {
             </div>
             <div class="inner-content">
                 <h3>
-                    <a href="#">
+                    <a href="../dishDetails/?id=${item.id}" title='${item.name}'>
                         ${item.name}
                     </a>
                 </h3>
@@ -82,9 +82,9 @@ const innerProductHtml = (dataProduct) => {
                     ` : ``}
                 </div>
             </div>
-            <button class="inner-button">
+            <a href="../dishDetails/?id=${item.id}" class="inner-button">
                 Xem chi tiết
-            </button>
+            </a>
         </div>
         `).join('')}
     `;

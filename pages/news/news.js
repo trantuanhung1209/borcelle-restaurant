@@ -41,8 +41,8 @@ const innerLeft = async () => {
             ${data.map(item => `
             <div class="inner-item" id=${item.id}>
                 <div class="inner-thumb">
-                    <a href="#" title=${item.title}>
-                        <img src=${item.image} alt=${item.title}>
+                    <a href="#" title='${item.title}'>
+                        <img src=${item.image} alt='${item.title}'>
                     </a>
                 </div>
                 <div class="inner-text">
@@ -93,8 +93,8 @@ const innerRight = async () => {
         <div class="inner-item col-4 mb-4" id=${item.id}>
             <div class="inner-blog">
                 <div class="inner-thumb">
-                    <a href="../article/" title=${item.title}>
-                        <img src=${item.image} alt=${item.title}>
+                    <a href="../article/" title='${item.title}'>
+                        <img src=${item.image} alt='${item.title}'>
                     </a>
                     <div class="inner-date">
                         ${item.date}
@@ -105,7 +105,7 @@ const innerRight = async () => {
                         <span>Đăng bởi: Admin Hune</span>
                     </div>
                     <h3 >
-                        <a class="line-clamp line-clamp-2" href="../article/" title=${item.title}>
+                        <a class="line-clamp line-clamp-2" href="../article/" title='${item.title}'>
                             ${item.title}
                         </a>
                     </h3>
