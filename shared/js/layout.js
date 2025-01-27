@@ -47,9 +47,9 @@ const header = async () => {
                         <button class="inner-location button-icon">
                             <i class="fa-solid fa-location-dot"></i>
                         </button>
-                        <button class="order button">
+                        <a href="../order/" class="order button">
                             Đặt bàn
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -172,6 +172,7 @@ const backToTop = () => {
         window.onscroll = () => {
             if (window.scrollY > 200) {
                 innerScroll.style.display = "flex";
+                innerScroll.style.zIndex = "99999";
             } else {
                 innerScroll.style.display = "none";
             }
@@ -187,3 +188,78 @@ const backToTop = () => {
 backToTop();
 // end back to top
 
+// sale popup 
+const salePopup = async () => {
+    // Lấy dữ liệu sản phẩm từ file JSON
+    const response = await fetch('../../data/home/products.json');
+    const products = await response.json();
+    const dataFinal = [...products.products];
+
+    const salePopup = document.querySelector(".inner-sale-popup");
+
+    if (salePopup) {
+        setInterval(() => {
+            // Random một sản phẩm mới mỗi lần popup hiển thị
+            const randomNumber = Math.floor(Math.random() * dataFinal.length);
+            const randomProduct = dataFinal[randomNumber];
+            console.log(randomProduct);
+
+            // Tạo nội dung template cho popup
+            const salePopupTemplate = `
+            <div class="inner-content">
+                <div class="inner-header">
+                    <h2>
+                        Thông báo
+                    </h2>
+                    <button class="inner-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="inner-body">
+                    <div class="inner-image">
+                        <a href="../dishDetails/?id=${randomProduct.id}">
+                            <img src=${randomProduct.image} alt=${randomProduct.name}>
+                        </a>
+                    </div>
+                    <div class="inner-text">
+                        <h2 class="inner-title">
+                            Món ăn
+                        </h2>
+                        <h3 class="inner-name">
+                            <a href="../dishDetails/?id=${randomProduct.id}">${randomProduct.name}</a>
+                        </h3>
+                        <p>
+                            Vừa được mua cách đây ${randomProduct.id} phút
+                        </p>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            // Hiển thị popup
+            salePopup.innerHTML = salePopupTemplate;
+            salePopup.style.display = "block";
+            salePopup.style.animation = "slideIn 1s forwards";
+
+            // Ẩn popup sau 5 giây
+            setTimeout(() => {
+                salePopup.style.animation = "slideNone 1s forwards";
+                setTimeout(() => {
+                    salePopup.style.display = "none";
+                }, 1000);
+            }, 5000);
+
+            // Sự kiện đóng khi nhấn nút "X"
+            const innerClose = document.querySelector(".inner-close");
+            innerClose.addEventListener("click", () => {
+                salePopup.style.animation = "slideNone 1s forwards";
+                setTimeout(() => {
+                    salePopup.style.display = "none";
+                }, 1000);
+            });
+        }, 10000);
+    }
+};
+
+salePopup();
+// end sale popup

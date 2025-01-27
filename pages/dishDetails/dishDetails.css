@@ -143,6 +143,26 @@
                         }
 
                         .inner-button-order {
+                            background-color: var(--background-color-button);
+                            color: white;
+                            font-size: 16px;
+                            font-weight: 500;
+                            padding: 10px 20px;
+                            border: none;
+                            cursor: pointer;
+                            border-radius: 8px;
+                            transition: all 0.3s;
+                            text-transform: uppercase;
+                            text-decoration: none;
+                            display: inline-block;
+                            text-align: center;
+
+                            &:hover {
+                                background-color: var(--background-color-button-hover);
+                            }
+                        }
+
+                        .inner-button-order {
                             background-color: #d83a3a;
 
                             &:hover {

@@ -127,9 +127,10 @@
                 background-color: var(--background-color-button);
                 color: white;
 
-                h3 {
-                    font-size: 20px;
+                h2 {
+                    font-size: 32px;
                     font-weight: 700;
+                    font-family: var(--font-title);
                 }
 
                 .inner-popup-close {
@@ -175,6 +176,11 @@
                         border: none;
                         border-radius: 8px;
                         padding: 5px 20px;
+                        box-shadow: 0 3px #a37b44;
+
+                        &:hover {
+                            background-color: var(--background-color-button-hover);
+                        }
                     }
                 }
             }

@@ -76,9 +76,9 @@ const innerLeftTop = async () => {
                         <i class="fas fa-cart-plus"></i>
                         Thêm vào giỏ hàng
                     </button>
-                    <button class="inner-button-order col-5">
+                    <a href="../order/" class="inner-button-order col-5">
                         Đặt bàn tại đây
-                    </button>
+                    </a>
                 </div>
             </div>
 

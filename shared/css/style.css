@@ -318,3 +318,120 @@ a {
 .header .inner-menu .active {
     color: var(--background-color-button);
 }
+
+.inner-sale-popup {
+    width: 400px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: none;
+
+    .inner-content {
+        padding: 0;
+
+        .inner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+            h2 {
+                font-family: var(--font-title);
+                font-weight: 700;
+                font-size: 20px;
+                color: var(--background-color-button);
+            }
+
+            .inner-close {
+                font-size: 20px;
+                font-weight: 700;
+                cursor: pointer;
+                border: none;
+                background-color: transparent;
+                color: #878787;
+
+                &:hover {
+                    color: var(--background-color-button);
+                }
+            }
+        }
+
+        .inner-body {
+            display: flex;
+            gap: 20px;
+
+            .inner-image {
+                width: 80px;
+                height: 80px;
+
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .inner-text {
+                flex: 1;
+
+                .inner-title {
+                    font-family: var(--font-title);
+                    font-weight: 700;
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                    color: var(--background-color-button);
+                }
+
+                .inner-name {
+                    color: black;
+                    font-weight: 400;
+                    font-size: 16px;
+
+                    a {
+                        color: black;
+
+                        &:hover {
+                            color: var(--background-color-button);
+                        }
+                    }
+                }
+
+                p {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #878787;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        bottom: -100%;
+    }
+
+    100% {
+        bottom: 20px;
+    }
+}
+
+@keyframes slideNone {
+    0% {
+        bottom: 20px;
+    }
+
+    100% {
+        bottom: -100%;
+    }
+}

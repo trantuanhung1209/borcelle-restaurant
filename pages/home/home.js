@@ -11,10 +11,10 @@ const section1 = () => {
             </h1>
             <p class="text-[20px] font-[600] mb-[15px] font-dancing slideIn">Chúng tôi mang đến cho bạn
                 những trải nghiệm ẩm thực tuyệt vời nhất</p>
-            <button
+            <a href="../order/"
                 class="uppercase px-[20px] py-[12px] rounded-[8px] bg-button hover:bg-buttonHover slide-butom">
                 Đặt bàn ngay
-            </button>
+            </a>
         </div>
     </div>
     `;

@@ -114,10 +114,10 @@ const section1InnerRight = () => {
                     sectionPopup.style.display = 'block';
                     sectionPopup.style.opacity = '1';
                     sectionPopup.style.pointerEvents = 'auto';
-                    const popupContent = sectionPopup.querySelector('.inner-popup-body');
+                    const popupBody = sectionPopup.querySelector('.inner-popup-body');
                     const popupContentTemplate = `
                     <p>
-                        Cảm ơn bạn đã liên hệ với Borcelle Restaurant. Chúng tôi sẽ phản hồi lại bạn trong thời gian sớm
+                        Cảm ơn bạn đã liên hệ với <b>Borcelle Restaurant</b>. Chúng tôi sẽ phản hồi lại bạn trong thời gian sớm
                         nhất.
                     </p>
                     <div class="inner-info">
@@ -144,9 +144,9 @@ const section1InnerRight = () => {
                         </button>
                     </div>
                     `;
-                    if (popupContent) {
-                        popupContent.innerHTML = popupContentTemplate;
-                        const innerButton = popupContent.querySelector('.inner-button');
+                    if (popupBody) {
+                        popupBody.innerHTML = popupContentTemplate;
+                        const innerButton = popupBody.querySelector('.inner-button');
                         innerButton.addEventListener('click', (e) => {
                             e.preventDefault();
                             sectionPopup.style.display = 'none';
