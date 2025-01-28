@@ -55,9 +55,6 @@ const innerProductHtml = (dataProduct) => {
                     <div class="inner-cart">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <div class="inner-wishlist">
-                        <i class="fas fa-heart"></i>
-                    </div>
                 </div>
                 ${item.discount? `
                 <div class="inner-discount">

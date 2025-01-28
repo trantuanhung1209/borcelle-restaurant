@@ -294,7 +294,7 @@
                     gap: 20px;
                     position: absolute;
                     bottom: 30%;
-                    left: 20px;
+                    left: 32%;
 
                     .inner-cart {
                         width: 82px;
@@ -310,6 +310,10 @@
                             font-size: 20px;
                             color: white;
                             cursor: pointer;
+
+                            &:hover {
+                                color: var(--background-color-primary);
+                            }
                         }
                     }
                     .inner-wishlist {

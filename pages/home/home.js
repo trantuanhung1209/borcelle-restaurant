@@ -199,14 +199,10 @@ const section4 = async () => {
                             <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
                                 <img src="${item.image}" alt='${item.name}' class="w-full h-full object-cover" loading="lazy">
                             </a>
-                            <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
+                            <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-32px] left-[20%]">
                                 <!-- Nút thêm vào giỏ hàng -->
                                 <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
                                     <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                </a>
-                                <!-- Nút yêu thích -->
-                                <a href="#" class="add-to-wishlist block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
-                                    <i class="${item.isFavorite ? 'fas fa-heart text-[#ff0000d1]' : 'far fa-heart text-white'} text-[20px] font-[700] hover:text-[#ff0000d1]"></i>
                                 </a>
                             </div>
                             ${item.discount ? `
@@ -261,14 +257,10 @@ const section4 = async () => {
                                         <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
                                             <img src="${item.image}" alt='${item.name}' class="w-full h-full object-cover" loading="lazy">
                                         </a>
-                                        <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
+                                        <div class="product-action flex items-center gap-[20px] pl-[36px] absolute left-[20%] bottom-[-32px]">
                                             <!-- Nút thêm vào giỏ hàng -->
                                             <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
                                                 <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                            </a>
-                                            <!-- Nút yêu thích -->
-                                            <a href="#" class="add-to-wishlist block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
-                                                <i class="${item.isFavorite ? 'fas fa-heart text-[#ff0000d1]' : 'far fa-heart text-white'} text-[20px] font-[700] hover:text-[#ff0000d1]"></i>
                                             </a>
                                         </div>
                                         ${item.discount ? `
@@ -338,13 +330,9 @@ const section5 = async () => {
                             <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
                                 <img src=${item.image} alt='${item.name}' class="w-full h-ful object-cover" loading="lazy">
                             </a>
-                            <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-36px]">
+                            <div class="product-action flex items-center gap-[20px] pl-[36px] absolute left-[20%] bottom-[-32px]">
                                 <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] ">
                                     <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                </a>
-                                <a href="#"
-                                    class="add-to-wishlist block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
-                                    <i class="far fa-heart text-[20px] font-[700] text-white hover:text-[#ff0000d1]"></i>
                                 </a>
                             </div>
                         </div>
