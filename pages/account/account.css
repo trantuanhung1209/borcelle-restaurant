@@ -1,0 +1,76 @@
+@import url('../../shared/css/variables.css');
+@import url('../../shared/css/style.css');
+
+.main {
+    font-family: var(--font-text);
+    margin-top: -100px;
+    padding-top: 100px;
+    background-color: var(--background-color-primary);
+}
+
+.inner-breadcumb {
+    color: white;
+    background-color: #071513;
+}
+
+.inner-breadcumb ul li a {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.section-1 .container {
+    color: white;
+
+    .inner-content {
+        display: flex;
+        gap: 20px;
+        align-items: start;
+        justify-content: center;
+    
+        .inner-desc {
+            width: 45%;
+    
+            .inner-title {
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+        }
+    
+        .inner-orderDetail {
+            width: 55%;
+    
+            .inner-title {
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+    
+            .inner-orderDetail-content {
+                
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 20px;
+    
+                    th, td {
+                        border: 1px solid white;
+                        padding: 10px;
+                        text-align: left;
+                    }
+    
+                    th {
+                        background-color: var(--background-color-button);
+                        text-align: center;
+                    }
+    
+                    td {
+                        background-color: transparent;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

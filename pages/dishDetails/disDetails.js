@@ -3,6 +3,98 @@ const url = new URL(window.location.href);
 const id = url.searchParams.get('id');
 const idFinal = parseInt(id);
 
+// ------------cart--------------
+const cart2 = JSON.parse(localStorage.getItem("cart")) || [];
+
+const getQuantityTotal2 = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.quantity;
+    });
+    return total;
+};
+
+const getTotalPrice2 = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+    return total.toLocaleString();
+};
+
+const rederCart2 = () => {
+    const innerCart = document.querySelector(".inner-cart");
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (innerCart) {
+        if (cart.length > 0) {
+            const cartTemplate = `
+            
+            <i class="fa-solid fa-shopping-cart"></i>
+                            
+                <div class="inner-quantity-total">
+                    ${getQuantityTotal2(cart)}
+                </div>
+
+                <div class="inner-cart-box">
+                    <div class="inner-list-product">
+                        ${cart.map(item => `
+                        <div class="inner-item">
+                            <div class="inner-image">
+                                <a href="../dishDetails/?id=${item.id}">
+                                    <img src=${item.image} alt='${item.name}' />
+                                </a>
+                            </div>
+                            <div class="inner-text">
+                                <h3 class="inner-name">
+                                    <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+                                </h3>
+                                <p class="inner-quantity">
+                                    Số lượng: ${item.quantity}
+                                </p>
+                            </div>
+                            <div class="inner-action">
+                                <p class="inner-price">
+                                    ${(item.price * item.quantity).toLocaleString()}đ
+                                </p>
+                                <div class="inner-remove">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        `).join('')}
+                    </div>
+                    <div class="inner-total">
+                    <p>
+                        <span>Tổng cộng:</span> 
+                        <span>${getTotalPrice2(cart)}đ</span>
+                    </p>
+                    <div class="inner-button">
+                        <div class="inner-button-checkout">
+                            Thanh toán
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+            
+        } else {
+            const cartTemplate = `
+            <div class="inner-empty">
+                <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+        }
+    }
+}
+rederCart2();
+// ------------end cart--------------
+
 // ------------breadcumb----------------
 const breadCumb = async () => {
     const response = await fetch('../../data/home/products.json');
@@ -72,7 +164,7 @@ const innerLeftTop = async () => {
                 </div>
 
                 <div class="inner-button row gap-2">
-                    <button class="inner-button-add col-5">
+                    <button class="inner-button-add col-5" id=${idFinal}>
                         <i class="fas fa-cart-plus"></i>
                         Thêm vào giỏ hàng
                     </button>
@@ -106,6 +198,31 @@ const innerLeftTop = async () => {
 
     if (innerTopElement) {
         innerTopElement.innerHTML = innerTopTemplate;
+
+        // const quantityInput = document.getElementById('quantity');
+        // const decreaseBtn = document.getElementById('decrease');
+        // const increaseBtn = document.getElementById('increase');
+
+        // decreaseBtn.addEventListener('click', () => {
+        //     const value = parseInt(quantityInput.value);
+        //     if (value > 1) {
+        //         quantityInput.value = value - 1;
+        //     } else {
+        //         quantityInput.value = 1;
+        //     }
+        // });
+
+        // increaseBtn.addEventListener('click', () => {
+        //     const value = parseInt(quantityInput.value);
+        //     quantityInput.value = value + 1;
+        //     quantity = value + 1;
+        // });
+
+        // const addToCartBtn = document.querySelector('.inner-button-add');
+        // addToCartBtn.addEventListener('click', () => {
+        //     console.log('click');
+        // });
+        
     }
 };
 innerLeftTop();
@@ -152,6 +269,45 @@ const innerLeftBottom = async () => {
 
     if (innerBottomElement) {
         innerBottomElement.innerHTML = innerBottomTemplate;
+
+        const addToCartBtn = document.querySelector('.inner-button-add');
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            const value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            } else {
+                quantityInput.value = 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            const value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+            quantity = value + 1;
+        });
+
+        addToCartBtn.addEventListener('click', () => {
+            const quantity = parseInt(quantityInput.value);
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const item = cart.find(item => item.id === idFinal);
+
+            if (item) {
+                item.quantity += quantity;
+                alert('Đã thêm vào giỏ hàng');
+            } else {
+                const dataItem = data.products.find(item => item.id === idFinal);
+                cart.push({ id: idFinal, quantity, ...dataItem });
+                alert('Đã thêm vào giỏ hàng');
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            rederCart2();
+        });
+
     }
 };
 innerLeftBottom();
@@ -187,7 +343,7 @@ const innerRightTop = async () => {
                 <p class="inner-price">
                     ${item.price.toLocaleString()}₫
                 </p>
-                <button class="inner-button">
+                <button class="inner-button" id=${item.id}>
                     Đặt món
                 </button>
             </div>
@@ -198,6 +354,28 @@ const innerRightTop = async () => {
 
     if (innerRightTopElement) {
         innerRightTopElement.innerHTML = innerRightTopTemplate;
+
+        const innerButton = innerRightTopElement.querySelectorAll('.inner-button');
+        innerButton.forEach((button) => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('id');
+                const idFinal = parseInt(id);
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const item = cart.find(item => item.id === idFinal);
+
+                if (item) {
+                    item.quantity += 1;
+                    alert('Đã thêm vào giỏ hàng');
+                } else {
+                    const dataItem = data.products.find(item => item.id === idFinal);
+                    cart.push({ id: idFinal, quantity: 1, ...dataItem });
+                    alert('Đã thêm vào giỏ hàng');
+                }
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+                rederCart2();
+            });
+        });
     }
 }
 innerRightTop();

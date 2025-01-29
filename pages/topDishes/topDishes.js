@@ -1,5 +1,97 @@
 const mainElement = document.querySelector('.main');
 
+// ------------cart--------------
+const cart2 = JSON.parse(localStorage.getItem("cart")) || [];
+
+const getQuantityTotal2 = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.quantity;
+    });
+    return total;
+};
+
+const getTotalPrice2 = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+    return total.toLocaleString();
+};
+
+const rederCart2 = () => {
+    const innerCart = document.querySelector(".inner-cart");
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (innerCart) {
+        if (cart.length > 0) {
+            const cartTemplate = `
+            
+            <i class="fa-solid fa-shopping-cart"></i>
+                            
+                <div class="inner-quantity-total">
+                    ${getQuantityTotal2(cart)}
+                </div>
+
+                <div class="inner-cart-box">
+                    <div class="inner-list-product">
+                        ${cart.map(item => `
+                        <div class="inner-item">
+                            <div class="inner-image">
+                                <a href="../dishDetails/?id=${item.id}">
+                                    <img src=${item.image} alt='${item.name}' />
+                                </a>
+                            </div>
+                            <div class="inner-text">
+                                <h3 class="inner-name">
+                                    <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+                                </h3>
+                                <p class="inner-quantity">
+                                    Số lượng: ${item.quantity}
+                                </p>
+                            </div>
+                            <div class="inner-action">
+                                <p class="inner-price">
+                                    ${(item.price * item.quantity).toLocaleString()}đ
+                                </p>
+                                <div class="inner-remove">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        `).join('')}
+                    </div>
+                    <div class="inner-total">
+                    <p>
+                        <span>Tổng cộng:</span> 
+                        <span>${getTotalPrice2(cart)}đ</span>
+                    </p>
+                    <div class="inner-button">
+                        <div class="inner-button-checkout">
+                            Thanh toán
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+            
+        } else {
+            const cartTemplate = `
+            <div class="inner-empty">
+                <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+        }
+    }
+}
+rederCart2();
+// ------------end cart--------------
+
 // ----------inner-right----------
 const removeDuplicateProducts = (products) => {
     const seen = new Set(); // Tập hợp các tên sản phẩm đã gặp
@@ -52,7 +144,7 @@ const innerProductHtml = (dataProduct) => {
                 </a>
 
                 <div class="inner-action">
-                    <div class="inner-cart">
+                    <div class="inner-cart" id=${item.id}>
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>
@@ -170,6 +262,33 @@ const innerRight = async () => {
                     const innerListProduct = mainElement.querySelector('.inner-list-product');
                     const innerListProductTemplate = innerProductHtml({products: sortByType(dataProduct.products, innerSelectTag)});
                     innerListProduct.innerHTML = innerListProductTemplate;
+                });
+            });
+
+            const innerCart = document.querySelectorAll('.inner-action .inner-cart');
+            console.log(innerCart);
+            innerCart.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = item.getAttribute('id');
+                    const idFinal = parseInt(id);
+                    const product = dataProduct.products.find(item => item.id === idFinal);
+                    if (product) {
+                        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        const cartItem = cart.find(item => item.id === idFinal);
+                        if (cartItem) {
+                            cartItem.quantity += 1;
+                            alert('Sản phẩm đã được thêm vào giỏ hàng');
+                        } else {
+                            cart.push({...product, quantity: 1});
+                            alert('Sản phẩm đã được thêm vào giỏ hàng');
+                        }
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        rederCart2();
+                    } else {
+                        alert('Sản phẩm không tồn tại');
+                    }
+                    
                 });
             });
         }

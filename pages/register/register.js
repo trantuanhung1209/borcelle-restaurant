@@ -1,5 +1,78 @@
 const mainElement = document.querySelector('.main');
 
+// ------------cart--------------
+// const getTotalPrice2 = (cart) => {
+//     let total = 0;
+//     cart.forEach(item => {
+//         total += item.price * item.quantity;
+//     });
+//     return total.toLocaleString();
+// };
+
+// const rederCart2 = () => {
+//     const innerCartBox = document.querySelector(".inner-cart-box");
+
+//     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//     if (innerCartBox) {
+//         if (cart.length > 0) {
+//             const cartTemplate = `
+//             <div class="inner-list-product">
+//                 ${cart.map(item => `
+//                 <div class="inner-item">
+//                     <div class="inner-image">
+//                         <a href="../dishDetails/?id=${item.id}">
+//                             <img src=${item.image} alt='${item.name}' />
+//                         </a>
+//                     </div>
+//                     <div class="inner-text">
+//                         <h3 class="inner-name">
+//                             <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+//                         </h3>
+//                         <p class="inner-quantity">
+//                             Số lượng: ${item.quantity}
+//                         </p>
+//                     </div>
+//                     <div class="inner-action">
+//                         <p class="inner-price">
+//                             ${(item.price * item.quantity).toLocaleString()}đ
+//                         </p>
+//                         <div class="inner-remove">
+//                             <i class="fa-solid fa-trash"></i>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 `).join('')}
+//             </div>
+//             <div class="inner-total">
+//                 <p>
+//                     <span>Tổng cộng:</span> 
+//                     <span>${getTotalPrice2(cart)}đ</span>
+//                 </p>
+//                 <div class="inner-button">
+//                     <div class="inner-button-checkout">
+//                         Thanh toán
+//                     </div>
+//                 </div>
+//             </div>
+//             `;
+
+//             innerCartBox.innerHTML = cartTemplate;
+            
+//         } else {
+//             const cartTemplate = `
+//             <div class="inner-empty">
+//                 <p>Giỏ hàng của bạn đang trống</p>
+//             </div>
+//             `;
+
+//             innerCartBox.innerHTML = cartTemplate;
+//         }
+//     }
+// }
+// rederCart2();
+// ------------end cart--------------
+
 // ----------breadcumb----------
 const breadecumb = () => {
     const breadecumb = mainElement.querySelector('.inner-breadcumb');
@@ -25,6 +98,10 @@ breadecumb();
 // ----------end breadcumb----------
 
 // ----------section 1----------
+function validateEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
 const section1 = () => {
     const section1 = mainElement.querySelector('.section-1');
     const section1Template = `
@@ -91,6 +168,36 @@ const section1 = () => {
     `;
     if (section1) {
         section1.innerHTML = section1Template;
+
+        const form = section1.querySelector('.inner-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = form.fullName.value;
+            const email = form.email.value;
+            const phoneNumber = form.phoneNumber.value;
+            const password = form.password.value;
+            const userData = JSON.parse(localStorage.getItem('userData'));
+
+            if (fullName && validateEmail(email) && phoneNumber && password) { 
+                if (email === userData.email) {
+                    alert('Email đã tồn tại');
+                } else {
+                    const newUser = {
+                        fullName: fullName,
+                        email: email,
+                        phoneNumber: phoneNumber,
+                        password: password
+                    };
+                    localStorage.setItem('userData', JSON.stringify(newUser));
+                    alert('Đăng ký thành công');
+                    window.location.href = '../home/';
+                    localStorage.setItem('isLogin', true);
+                }
+
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin');
+            }
+        });
     }
 }
 section1();

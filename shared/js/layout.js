@@ -9,8 +9,164 @@ window.onload = () => {
 // end loader
 
 // header
+const removeDuplicateProducts2 = (products) => {
+    const seen = new Set(); // Tập hợp các tên sản phẩm đã gặp
+    return products.filter(product => {
+        if (seen.has(product.name)) {
+            return false; // Bỏ qua sản phẩm nếu tên đã tồn tại
+        }
+        seen.add(product.name); // Thêm tên vào danh sách đã gặp
+        return true; // Giữ sản phẩm
+    });
+};
+
+const renderProductSearch = async (content) => {
+    try {
+        // Fetch data từ file JSON hoặc API
+        const response = await fetch('../../data/home/products.json');
+        const products = await response.json();
+        const dataFinal = [...products.products];
+
+        // Lọc dữ liệu theo nội dung tìm kiếm
+        const dataSearch = removeDuplicateProducts2(dataFinal).filter(item => item.name.toLowerCase().includes(content.toLowerCase()));
+
+        // Lấy phần tử .inner-search-result
+        const innerSearchResult = document.querySelector(".inner-search-result");
+        if (innerSearchResult) {
+            // Tạo nội dung template cho kết quả tìm kiếm
+            const innerSearchResultTemplate = `
+            <h3 class="inner-title">
+                Kết quả tìm kiếm: 
+            </h3>
+            <div class="inner-list-result">
+                ${dataSearch.splice(0,2).map(item => `
+                <div class= "inner-item">
+                    <div class="inner-image">
+                        <a href="../dishDetails/?id=${item.id}">
+                            <img src=${item.image} alt='${item.name}' />
+                        </a>
+                    </div>
+                    
+                    <div class="inner-text">
+                        <h3 class="inner-name">
+                            <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+                        </h3>
+                        <p class="inner-price">
+                            ${item.price}đ
+                        </p>
+                    </div>
+                </div>
+                `).join('')}
+            </div>
+            <a href="../search/?content=${content}" class="inner-extra">
+                Xem tất cả kết quả tìm kiếm
+            </a>
+            `;
+
+            // Hiển thị kết quả tìm kiếm
+            innerSearchResult.innerHTML = innerSearchResultTemplate;
+            innerSearchResult.style.display = "block";
+        }
+    } catch (error) {
+        console.error("Failed to fetch product data:", error);
+    }
+};
+
+// ------------cart--------------
+const getQuantityTotal = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.quantity;
+    });
+    return total;
+};
+
+const getTotalPrice = (cart) => {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+    return total.toLocaleString();
+};
+
+const rederCart = () => {
+    const innerCart = document.querySelector(".inner-cart");
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (innerCart) {
+        if (cart.length > 0) {
+            const cartTemplate = `
+            
+            <i class="fa-solid fa-shopping-cart"></i>
+                            
+                <div class="inner-quantity-total">
+                    ${getQuantityTotal(cart)}
+                </div>
+
+                <div class="inner-cart-box">
+                    <div class="inner-list-product">
+                        ${cart.map(item => `
+                        <div class="inner-item">
+                            <div class="inner-image">
+                                <a href="../dishDetails/?id=${item.id}">
+                                    <img src=${item.image} alt='${item.name}' />
+                                </a>
+                            </div>
+                            <div class="inner-text">
+                                <h3 class="inner-name">
+                                    <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+                                </h3>
+                                <p class="inner-quantity">
+                                    Số lượng: ${item.quantity}
+                                </p>
+                            </div>
+                            <div class="inner-action">
+                                <p class="inner-price">
+                                    ${(item.price * item.quantity).toLocaleString()}đ
+                                </p>
+                                <div class="inner-remove">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        `).join('')}
+                    </div>
+                    <div class="inner-total">
+                    <p>
+                        <span>Tổng cộng:</span> 
+                        <span>${getTotalPrice(cart)}đ</span>
+                    </p>
+                    <div class="inner-button">
+                        <div class="inner-button-checkout">
+                            Thanh toán
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+            
+        } else {
+            const cartTemplate = `
+            <div class="inner-empty">
+                <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+            `;
+
+            innerCart.innerHTML = cartTemplate;
+        }
+    }
+}
+rederCart();
+// ------------end cart--------------
+
 const header = async () => {
     try {
+        let isLogin = localStorage.getItem("isLogin");
+        console.log("isLogin: ", isLogin);
+
         // Fetch data từ file JSON hoặc API
         const response = await fetch('../../data/menu.json');
         const menu = await response.json();
@@ -37,15 +193,44 @@ const header = async () => {
                     <div class="inner-control">
                         <button class="inner-search button-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <div class="inner-search-box">
+                                <h2 class="inner-title">
+                                    Tìm kiếm món ăn 
+                                </h2>
+                                <form class="inner-form-search">
+                                    <input type="text" placeholder="Tìm kiếm..." name="content" autocomplete="off">
+                                    <a href="#" class="inner-search-button">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </form>
+
+                                <div class="inner-search-result"></div>
+                            </div>
                         </button>
                         <button class="inner-cart button-icon">
-                            <i class="fa-solid fa-shopping-cart"></i>
+                            
                         </button>
                         <button class="inner-user button-icon">
                             <i class="fa-solid fa-user"></i>
+
+                            <div class="inner-dropdown-menu">
+                                ${isLogin === "true" ?
+                                 `
+                                 <a href="../account/" class="inner-account">Tài khoản</a>
+                                 <a href="../home/" class="inner-logout">Đăng xuất</a>
+                                 `
+                                  : 
+                                 `
+                                 <a href="../login/" class="inner-login">Đăng nhập</a>
+                                 <a href="../register/" class="inner-register">Đăng ký</a>
+                                 `}
+                            </div>
                         </button>
                         <button class="inner-location button-icon">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <a href="../contact/" style="color: white;">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </a>
                         </button>
                         <a href="../order/" class="order button">
                             Đặt bàn
@@ -66,6 +251,37 @@ const header = async () => {
                     }
                 });
             }
+
+            const innerLogout = document.querySelector(".inner-logout");
+            if (innerLogout) {
+                innerLogout.addEventListener("click", () => {
+                    localStorage.setItem("isLogin", "false");
+                    window.location.href = "../login/";
+                });
+            }
+
+            // search
+            const innerFormSearch = document.querySelector(".inner-form-search");
+            if (innerFormSearch) {
+                const innerSearchButton = document.querySelector(".inner-search-button");
+
+                innerSearchButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const content = innerFormSearch.querySelector("input[name='content']");
+                    window.location.href = `../search/?content=${content.value}`;
+                });
+
+                innerFormSearch.addEventListener("input", (e) => {
+                    e.preventDefault();
+                    const content = innerFormSearch.querySelector("input[name='content']");
+                    renderProductSearch(content.value);
+                });
+            }
+            // end search
+
+            // cart
+            rederCart();
+            // end cart
         }
     } catch (error) {
         console.error("Failed to fetch menu data:", error);
@@ -202,7 +418,6 @@ const salePopup = async () => {
             // Random một sản phẩm mới mỗi lần popup hiển thị
             const randomNumber = Math.floor(Math.random() * dataFinal.length);
             const randomProduct = dataFinal[randomNumber];
-            console.log(randomProduct);
 
             // Tạo nội dung template cho popup
             const salePopupTemplate = `

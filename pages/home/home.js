@@ -1,5 +1,124 @@
 const mainElement = document.querySelector('.main');
 
+// add to cart 
+
+// ------------cart--------------
+// const cart2 = JSON.parse(localStorage.getItem("cart")) || [];
+
+// const getQuantityTotal2 = (cart) => {
+//     let total = 0;
+//     cart.forEach(item => {
+//         total += item.quantity;
+//     });
+//     return total;
+// };
+
+// const getTotalPrice2 = (cart) => {
+//     let total = 0;
+//     cart.forEach(item => {
+//         total += item.price * item.quantity;
+//     });
+//     return total.toLocaleString();
+// };
+
+// const rederCart2 = () => {
+//     const innerCart = document.querySelector(".inner-cart");
+
+//     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//     if (innerCart) {
+//         if (cart.length > 0) {
+//             const cartTemplate = `
+            
+//             <i class="fa-solid fa-shopping-cart"></i>
+                            
+//                 <div class="inner-quantity-total">
+//                     ${getQuantityTotal2(cart)}
+//                 </div>
+
+//                 <div class="inner-cart-box">
+//                     <div class="inner-list-product">
+//                         ${cart.map(item => `
+//                         <div class="inner-item">
+//                             <div class="inner-image">
+//                                 <a href="../dishDetails/?id=${item.id}">
+//                                     <img src=${item.image} alt='${item.name}' />
+//                                 </a>
+//                             </div>
+//                             <div class="inner-text">
+//                                 <h3 class="inner-name">
+//                                     <a href="../dishDetails/?id=${item.id}">${item.name}</a>
+//                                 </h3>
+//                                 <p class="inner-quantity">
+//                                     Số lượng: ${item.quantity}
+//                                 </p>
+//                             </div>
+//                             <div class="inner-action">
+//                                 <p class="inner-price">
+//                                     ${(item.price * item.quantity).toLocaleString()}đ
+//                                 </p>
+//                                 <div class="inner-remove">
+//                                     <i class="fa-solid fa-trash"></i>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         `).join('')}
+//                     </div>
+//                     <div class="inner-total">
+//                     <p>
+//                         <span>Tổng cộng:</span> 
+//                         <span>${getTotalPrice2(cart)}đ</span>
+//                     </p>
+//                     <div class="inner-button">
+//                         <div class="inner-button-checkout">
+//                             Thanh toán
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//             `;
+
+//             innerCart.innerHTML = cartTemplate;
+            
+//         } else {
+//             const cartTemplate = `
+//             <div class="inner-empty">
+//                 <i class="fa-solid fa-shopping-cart"></i>
+//             </div>
+//             `;
+
+//             innerCart.innerHTML = cartTemplate;
+//         }
+//     }
+// }
+// rederCart2();
+// ------------end cart--------------
+
+const addToCart = async (id) => {
+    try {
+        const response = await fetch('../../data/home/products.json');
+        const data = await response.json();
+        const product = data.products.find(product => product.id === id);
+        if (product) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cart.find(item => item.id === id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Thêm vào giỏ hàng thành công!');
+
+            rederCart();
+        } else {
+            alert('Sản phẩm không tồn tại!');
+        }
+    } catch (error) {
+        console.error("Error adding to cart:", error);
+    }
+};
+
 // -----------------section 1
 const section1 = () => {
     const section1Element = mainElement.querySelector('.section-1');
@@ -201,9 +320,9 @@ const section4 = async () => {
                             </a>
                             <div class="product-action flex items-center gap-[20px] pl-[36px] absolute bottom-[-32px] left-[20%]">
                                 <!-- Nút thêm vào giỏ hàng -->
-                                <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
+                                <div class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] cursor-pointer" onclick="addToCart(${item.id})">
                                     <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                </a>
+                                </div>
                             </div>
                             ${item.discount ? `
                                 <div class="product-discount">
@@ -259,9 +378,9 @@ const section4 = async () => {
                                         </a>
                                         <div class="product-action flex items-center gap-[20px] pl-[36px] absolute left-[20%] bottom-[-32px]">
                                             <!-- Nút thêm vào giỏ hàng -->
-                                            <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px]">
+                                            <div class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] cursor-pointer" onclick="addToCart(${item.id})" >
                                                 <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                            </a>
+                                            </div>
                                         </div>
                                         ${item.discount ? `
                                             <div class="product-discount">
@@ -331,9 +450,9 @@ const section5 = async () => {
                                 <img src=${item.image} alt='${item.name}' class="w-full h-ful object-cover" loading="lazy">
                             </a>
                             <div class="product-action flex items-center gap-[20px] pl-[36px] absolute left-[20%] bottom-[-32px]">
-                                <a href="#" class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] ">
+                                <div class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] cursor-pointer" onclick="addToCart(${item.id})" >
                                     <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
-                                </a>
+                                </div>
                             </div>
                         </div>
                         <div class="product-info text-center p-[10px] relative bg-white">
