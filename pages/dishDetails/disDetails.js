@@ -80,6 +80,29 @@ const rederCart2 = () => {
             `;
 
             innerCart.innerHTML = cartTemplate;
+
+            const innerRemove = document.querySelectorAll(".inner-remove");
+            if (innerRemove) {
+                innerRemove.forEach(item => {
+                    item.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const id = item.getAttribute("id");
+                        const idFinal = parseInt(id);
+                        const newCart = cart.filter(product => product.id !== idFinal);
+                        localStorage.setItem("cart", JSON.stringify(newCart));
+                        rederCart();
+                    });
+                });
+            }
+
+            const innerButtonCheckout = document.querySelector(".inner-button-checkout");
+            console.log(innerButtonCheckout);
+            if (innerButtonCheckout) {
+                innerButtonCheckout.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    window.location.href = "../checkout/";
+                });
+            }
             
         } else {
             const cartTemplate = `

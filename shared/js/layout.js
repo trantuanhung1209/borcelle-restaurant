@@ -125,7 +125,7 @@ const rederCart = () => {
                                 <p class="inner-price">
                                     ${(item.price * item.quantity).toLocaleString()}đ
                                 </p>
-                                <div class="inner-remove">
+                                <div class="inner-remove" id=${item.id}>
                                     <i class="fa-solid fa-trash"></i>
                                 </div>
                             </div>
@@ -147,6 +147,28 @@ const rederCart = () => {
             `;
 
             innerCart.innerHTML = cartTemplate;
+
+            const innerRemove = document.querySelectorAll(".inner-remove");
+            if (innerRemove) {
+                innerRemove.forEach(item => {
+                    item.addEventListener("click", (e) => { 
+                        e.stopPropagation();
+                        const id = item.getAttribute("id");
+                        const idFinal = parseInt(id);
+                        const newCart = cart.filter(product => product.id !== idFinal);
+                        localStorage.setItem("cart", JSON.stringify(newCart));
+                        rederCart();
+                    });
+                });
+            }
+
+            const innerButtonCheckout = document.querySelector(".inner-button-checkout");
+            if (innerButtonCheckout) {
+                innerButtonCheckout.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    window.location.href = "../checkout/";
+                });
+            }
             
         } else {
             const cartTemplate = `
@@ -208,9 +230,8 @@ const header = async () => {
                                 <div class="inner-search-result"></div>
                             </div>
                         </button>
-                        <button class="inner-cart button-icon">
-                            
-                        </button>
+                        <button class="inner-cart button-icon"></button>
+
                         <button class="inner-user button-icon">
                             <i class="fa-solid fa-user"></i>
 
@@ -281,6 +302,12 @@ const header = async () => {
 
             // cart
             rederCart();
+            const innerCart = document.querySelector(".inner-cart");
+            if (innerCart) {
+                innerCart.addEventListener("click", () => {
+                    window.location.href = "../cart/";
+                });
+            }
             // end cart
         }
     } catch (error) {

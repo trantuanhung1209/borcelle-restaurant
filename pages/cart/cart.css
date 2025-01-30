@@ -1,0 +1,176 @@
+@import url('../../shared/css/variables.css');
+@import url('../../shared/css/style.css');
+
+.main {
+    font-family: var(--font-text);
+    margin-top: -100px;
+    padding-top: 100px;
+    background-color: var(--background-color-primary);
+}
+
+.inner-breadcumb {
+    color: white;
+    background-color: #071513;
+}
+
+.inner-breadcumb ul li a {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.section-1 .container {
+    color: white;
+}
+
+.section-1 {
+    padding: 40px 0;
+
+    .inner-title {
+
+        h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: start;
+        }
+    }
+
+    .inner-list-product {
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+        width: 100%;
+
+        thead {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #ccc;
+
+            th {
+                padding: 10px;
+                text-align: start;
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid #ccc;
+            }
+
+            td {
+                padding: 10px;
+                text-align: start;
+
+                .inner-product {
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+
+                    .inner-image {
+                        width: 100px;
+                        height: 100px;
+                        margin-right: 20px;
+
+                        a {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                    }
+
+                    .inner-content {
+                        h3 {
+                            font-size: 16px;
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                            color: white;
+
+                            a {
+                                color: white;
+
+                                &:hover {
+                                    color: var(--background-color-button-hover);
+                                }
+                            }
+                        }
+
+                        .inner-button-remove {
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: white;
+                            background-color: #d69c52;
+                            padding: 5px 10px;
+                            border-radius: 5px;
+                            transition: all 0.3s;
+                            border: none;
+
+                            &:hover {
+                                background-color: var(--background-color-button-hover);
+                            }
+                        }
+                    }
+                }
+
+                span {
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: var(--background-color-button);
+                }
+            }
+        }
+    }
+
+    .inner-total {
+        padding-top: 20px;
+
+        .inner-total-content {
+            h3 {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: 50px;
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 10px;
+                color: white;
+
+                span {
+                    color: var(--background-color-button);
+                }
+            }
+        }
+
+        .inner-total-button {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 20px;
+            padding-top: 20px;
+
+            a {
+                display: block;
+                width: 200px;
+                font-size: 14px;
+                font-weight: 400;
+                color: white;
+                background-color: #d69c52;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: all 0.3s;
+                border: none;
+
+                &:hover {
+                    background-color: var(--background-color-button-hover);
+                }
+            }
+        }
+    }
+}
