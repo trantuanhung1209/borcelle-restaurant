@@ -142,6 +142,12 @@ function validateEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
+
+const validatePhoneNumber = (phoneNumber) => {
+    const re = /^[0-9]{10}$/;
+    return re.test(phoneNumber);
+}
+
 const section1InnerRight = () => {
     const section1 = mainElement.querySelector('.section-1');
     const innerRightElement = section1.querySelector('.inner-right');
@@ -180,7 +186,25 @@ const section1InnerRight = () => {
             const phone = innerRightElement.querySelector('#phone').value;
             const message = innerRightElement.querySelector('#message').value;
 
-            if (fullName && validateEmail(email) && phone && message) {
+            if (!fullName) {
+                alert('Vui lòng nhập họ và tên');
+                return;
+            } else if (!email) {
+                alert('Vui lòng nhập email');
+                return;
+            } else if (!validateEmail(email)) {
+                alert('Email không hợp lệ');
+                return;
+            } else if (!phone) {
+                alert('Vui lòng nhập số điện thoại');
+                return;
+            } else if (!validatePhoneNumber(phone)) {
+                alert('Số điện thoại không hợp lệ');
+                return;
+            } else if (!message) {
+                alert('Vui lòng nhập nội dung');
+                return;
+            } else {
                 innerRightElement.reset();
                 const sectionPopup = mainElement.querySelector('.section-popup');
                 if (sectionPopup) {
@@ -236,9 +260,8 @@ const section1InnerRight = () => {
                         });
                     }
                 }
-            } else {
-                alert('Vui lòng nhập đầy đủ thông tin');
             }
+
         });
     }
 }

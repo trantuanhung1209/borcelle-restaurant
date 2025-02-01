@@ -96,7 +96,6 @@ const rederCart2 = () => {
             }
 
             const innerButtonCheckout = document.querySelector(".inner-button-checkout");
-            console.log(innerButtonCheckout);
             if (innerButtonCheckout) {
                 innerButtonCheckout.addEventListener("click", (e) => {
                     e.stopPropagation();
@@ -319,8 +318,12 @@ const innerLeftBottom = async () => {
             const item = cart.find(item => item.id === idFinal);
 
             if (item) {
-                item.quantity += quantity;
-                alert('Đã thêm vào giỏ hàng');
+                if (quantity > 0) {
+                    item.quantity += quantity;
+                    alert('Đã thêm vào giỏ hàng');
+                } else {
+                    alert('Vui lòng chọn số lượng sản phẩm lớn hơn 0');
+                }
             } else {
                 const dataItem = data.products.find(item => item.id === idFinal);
                 cart.push({ id: idFinal, quantity, ...dataItem });

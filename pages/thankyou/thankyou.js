@@ -15,7 +15,24 @@ const getTotalPrice2 = (cart) => {
     cart.forEach(item => {
         total += item.price * item.quantity;
     });
-    return total.toLocaleString();
+
+    let discount = 0;
+    let flag = 0;
+
+    if (total > 200000 && total <= 500000) {
+        discount = 0.1;
+        flag = 10;
+    } else if (total > 500000) {
+        discount = 0.2;
+        flag = 20;
+    }
+
+    const finalTotal = total - (total * discount);
+    
+    return {
+        total: finalTotal.toLocaleString() + "đ",
+        flag: `Giảm giá ${flag}%`
+    };
 };
 
 // --------------inner left----------------
@@ -131,9 +148,13 @@ const innerRight = () => {
         `).join('')}
     </div>
 
+    <div class="inner-discount">
+        <span>${getTotalPrice2(cart).flag}</span>
+    </div>
+
     <div class="inner-total-price">
         <span>Tổng cộng:</span>
-        <span>${getTotalPrice2(cart).toLocaleString()}</span>
+        <span>${getTotalPrice2(cart).total}</span>
     </div>
     `;
 

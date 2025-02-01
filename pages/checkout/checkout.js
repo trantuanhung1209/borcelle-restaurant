@@ -2,6 +2,16 @@ const mainElement = document.querySelector('.main');
 const isLogin = localStorage.getItem('isLogin');
 const isLoginFinal = JSON.parse(isLogin);
 // ------------checkout--------------
+const  validateEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+const validatePhoneNumber = (phoneNumber) => {
+    const re = /^[0-9]{10}$/;
+    return re.test(phoneNumber);
+}
+
 const getQuantityTotal2 = (cart) => {
     let total = 0;
     cart.forEach(item => {
@@ -15,7 +25,24 @@ const getTotalPrice2 = (cart) => {
     cart.forEach(item => {
         total += item.price * item.quantity;
     });
-    return total.toLocaleString();
+
+    let discount = 0;
+    let flag = 0;
+
+    if (total > 200000 && total <= 500000) {
+        discount = 0.1;
+        flag = 10;
+    } else if (total > 500000) {
+        discount = 0.2;
+        flag = 20;
+    }
+
+    const finalTotal = total - (total * discount);
+    
+    return {
+        total: finalTotal.toLocaleString() + "đ",
+        flag: `Giảm giá ${flag}%`
+    };
 };
 
 const rederCart2 = () => {
@@ -62,17 +89,17 @@ const rederCart2 = () => {
                         `).join('')}
                     </div>
                     <div class="inner-total">
-                    <p>
-                        <span>Tổng cộng:</span> 
-                        <span>${getTotalPrice2(cart)}đ</span>
-                    </p>
-                    <div class="inner-button">
-                        <div class="inner-button-checkout">
-                            Thanh toán
+                        <p>
+                            <span>Tổng cộng:</span> 
+                            <span>${getTotalPrice2(cart)}đ</span>
+                        </p>
+                        <div class="inner-button">
+                            <div class="inner-button-checkout">
+                                Thanh toán
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             `;
 
             innerCart.innerHTML = cartTemplate;
@@ -205,9 +232,13 @@ const innerRight = () => {
         `).join('')}
     </div>
 
+    <div class="inner-discount">
+        <span>${getTotalPrice2(cart).flag}</span>
+    </div>
+
     <div class="inner-total-price">
         <span>Tổng cộng:</span>
-        <span>${getTotalPrice2(cart)}đ</span>
+        <span>${getTotalPrice2(cart).total}</span>
     </div>
 
     <div class="inner-action">
@@ -237,8 +268,8 @@ const innerRight = () => {
                 alert('Giỏ hàng của bạn đang trống');
                 return;
             } else {
-                if (!emailElement.value) {
-                    alert('Vui lòng nhập email');
+                if (!validateEmail(emailElement.value) || !emailElement.value) {
+                    alert('Email không hợp lệ');
                     return;
                 }
     
@@ -247,8 +278,8 @@ const innerRight = () => {
                     return;
                 }
     
-                if (!phoneNumberElement.value) {
-                    alert('Vui lòng nhập số điện thoại');
+                if (!phoneNumberElement.value || !validatePhoneNumber(phoneNumberElement.value)) {
+                    alert('Số điện thoại không hợp lệ');
                     return;
                 }
     

@@ -181,91 +181,96 @@ const section1 = () => {
                 const phoneNumber = form.querySelector('input[name="phoneNumber"]').value;
                 const date = form.querySelector('input[name="date"]').value;
                 const personNumber = form.querySelector('input[name="personNumber"]').value;
+                const person = Number(personNumber);
                 const time = form.querySelector('input[name="time"]').value;
 
                 if (fullName && validateEmail(email) && phoneNumber && date && personNumber && time) {
-                    form.reset();
-                    const sectionPopup = mainElement.querySelector('.section-popup');
-                    if (sectionPopup) {
-                        sectionPopup.style.display = 'block';
-                        sectionPopup.style.opacity = '1';
-                        sectionPopup.style.pointerEvents = 'auto';
-                        const popupBody = sectionPopup.querySelector('.inner-popup-body');
-                        const popupContentTemplate = `
-                        <p style="font-weight: 700; margin-bottom: 20px; font-size: 18px;">
-                            Thông tin đặt bàn của bạn đã được xác nhận! 🎉
-                        </p>
-                        <div class="inner-info">
-                            <p>
-                                <b>Xin chào</b> &nbsp; <span>${fullName}</span>
+                    if (person > 0) {
+                        form.reset();
+                        const sectionPopup = mainElement.querySelector('.section-popup');
+                        if (sectionPopup) {
+                            sectionPopup.style.display = 'block';
+                            sectionPopup.style.opacity = '1';
+                            sectionPopup.style.pointerEvents = 'auto';
+                            const popupBody = sectionPopup.querySelector('.inner-popup-body');
+                            const popupContentTemplate = `
+                            <p style="font-weight: 700; margin-bottom: 20px; font-size: 18px;">
+                                Thông tin đặt bàn của bạn đã được xác nhận! 🎉
                             </p>
-                            <p>
-                                Chúng tôi rất vui được thông báo rằng đặt bàn của bạn đã được xác nhận với thông tin
-                                sau:
-                            </p>
-                            <p>
-                                <b>Tên:</b> &nbsp; <span>${fullName}</span>
-                            </p>
-                            <p>
-                                <b>Email:</b> &nbsp; <span>
-                                    ${email}
-                                </span>
-                            </p>
-                            <p>
-                                <b>Số điện thoại:</b> &nbsp; <span>
-                                    ${phoneNumber}
-                                </span>
-                            </p>
-                            <p>
-                                <b>Ngày:</b> &nbsp; <span>
-                                    ${date}
-                                </span>
-                            </p>
-                            <p>
-                                <b>Giờ:</b> &nbsp; <span>
-                                    ${time}
-                                </span>
-                            </p>
-                            <p>
-                                <b>Số lượng người:</b> &nbsp; <span>
-                                    ${personNumber}
-                                </span>
-                            </p>
-                            <p>
-                                <b>Lưu ý</b>: Vui lòng đến trước 15 phút để đảm bảo trải nghiệm tốt nhất.
-                                Nếu cần thay đổi hoặc hủy lịch đặt bàn, vui lòng thông báo trước cho chúng tôi qua
-                                số 
-                                <a href="tel:0353133235" style="color: var(--background-color-button);">0353133235</a>
-                            </p>
-                            <p>
-                                Cảm ơn và hẹn gặp lại bạn sớm!
-                            </p>
-                        </div>
-                        <div class="inner-action">
-                            <button class="inner-button">
-                                Xác nhận
-                            </button>
-                        </div>
-                        `;
+                            <div class="inner-info">
+                                <p>
+                                    <b>Xin chào</b> &nbsp; <span>${fullName}</span>
+                                </p>
+                                <p>
+                                    Chúng tôi rất vui được thông báo rằng đặt bàn của bạn đã được xác nhận với thông tin
+                                    sau:
+                                </p>
+                                <p>
+                                    <b>Tên:</b> &nbsp; <span>${fullName}</span>
+                                </p>
+                                <p>
+                                    <b>Email:</b> &nbsp; <span>
+                                        ${email}
+                                    </span>
+                                </p>
+                                <p>
+                                    <b>Số điện thoại:</b> &nbsp; <span>
+                                        ${phoneNumber}
+                                    </span>
+                                </p>
+                                <p>
+                                    <b>Ngày:</b> &nbsp; <span>
+                                        ${date}
+                                    </span>
+                                </p>
+                                <p>
+                                    <b>Giờ:</b> &nbsp; <span>
+                                        ${time}
+                                    </span>
+                                </p>
+                                <p>
+                                    <b>Số lượng người:</b> &nbsp; <span>
+                                        ${personNumber}
+                                    </span>
+                                </p>
+                                <p>
+                                    <b>Lưu ý</b>: Vui lòng đến trước 15 phút để đảm bảo trải nghiệm tốt nhất.
+                                    Nếu cần thay đổi hoặc hủy lịch đặt bàn, vui lòng thông báo trước cho chúng tôi qua
+                                    số 
+                                    <a href="tel:0353133235" style="color: var(--background-color-button);">0353133235</a>
+                                </p>
+                                <p>
+                                    Cảm ơn và hẹn gặp lại bạn sớm!
+                                </p>
+                            </div>
+                            <div class="inner-action">
+                                <button class="inner-button">
+                                    Xác nhận
+                                </button>
+                            </div>
+                            `;
 
-                        if (popupBody) {
-                            popupBody.innerHTML = popupContentTemplate;
-                            const innerButton = popupBody.querySelector('.inner-button');
-                            innerButton.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                sectionPopup.style.display = 'none';
-                            });
+                            if (popupBody) {
+                                popupBody.innerHTML = popupContentTemplate;
+                                const innerButton = popupBody.querySelector('.inner-button');
+                                innerButton.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    sectionPopup.style.display = 'none';
+                                });
 
-                            const innerPopup = sectionPopup.querySelector('.inner-popup');
-                            const buttonClose = sectionPopup.querySelector('.inner-popup-close');
-                            innerPopup.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                            });
-                            buttonClose.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                sectionPopup.style.display = 'none';
-                            });
+                                const innerPopup = sectionPopup.querySelector('.inner-popup');
+                                const buttonClose = sectionPopup.querySelector('.inner-popup-close');
+                                innerPopup.addEventListener('click', (e) => {
+                                    e.stopPropagation();
+                                });
+                                buttonClose.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    sectionPopup.style.display = 'none';
+                                });
+                            }
                         }
+                    } else {
+                        alert('Số lượng người phải lớn hơn 0');
                     }
                 } else {
                     alert('Vui lòng nhập đầy đủ thông tin');

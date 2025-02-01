@@ -282,6 +282,20 @@ const header = async () => {
             }
 
             // search
+            const innerSearch = document.querySelector(".inner-search");
+            const innerSearchBox = document.querySelector(".inner-search-box");
+
+            innerSearch.addEventListener("click", (event) => {
+                innerSearchBox.style.display = "block";
+                event.stopPropagation();
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!innerSearchBox.contains(event.target) && !innerSearch.contains(event.target)) {
+                    innerSearchBox.style.display = "none";
+                }
+            });
+
             const innerFormSearch = document.querySelector(".inner-form-search");
             if (innerFormSearch) {
                 const innerSearchButton = document.querySelector(".inner-search-button");

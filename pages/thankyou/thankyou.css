@@ -175,6 +175,19 @@
                 }
             }
 
+            .inner-discount {
+                display: flex;
+                justify-content: flex-end;
+                padding: 20px;
+                border-top: 1px solid black;
+
+                span {
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--background-color-button);
+                }
+            }
+
             .inner-total-price {
                 display: flex;
                 justify-content: space-between;
