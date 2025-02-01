@@ -221,29 +221,58 @@ const innerLeftTop = async () => {
     if (innerTopElement) {
         innerTopElement.innerHTML = innerTopTemplate;
 
-        // const quantityInput = document.getElementById('quantity');
-        // const decreaseBtn = document.getElementById('decrease');
-        // const increaseBtn = document.getElementById('increase');
+         const addToCartBtn = document.querySelector('.inner-button-add');
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
 
-        // decreaseBtn.addEventListener('click', () => {
-        //     const value = parseInt(quantityInput.value);
-        //     if (value > 1) {
-        //         quantityInput.value = value - 1;
-        //     } else {
-        //         quantityInput.value = 1;
-        //     }
-        // });
+        decreaseBtn.addEventListener('click', () => {
+            const value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            } else {
+                quantityInput.value = 1;
+            }
+        });
 
-        // increaseBtn.addEventListener('click', () => {
-        //     const value = parseInt(quantityInput.value);
-        //     quantityInput.value = value + 1;
-        //     quantity = value + 1;
-        // });
+        increaseBtn.addEventListener('click', () => {
+            const value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+            quantity = value + 1;
+        });
 
-        // const addToCartBtn = document.querySelector('.inner-button-add');
-        // addToCartBtn.addEventListener('click', () => {
-        //     console.log('click');
-        // });
+        addToCartBtn.addEventListener('click', () => {
+            const quantity = parseInt(quantityInput.value);
+        
+            // Kiểm tra số lượng hợp lệ
+            if (isNaN(quantity) || quantity <= 0) {
+                alert('Vui lòng chọn số lượng sản phẩm lớn hơn 0');
+                return;
+            }
+        
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let item = cart.find(item => item.id === idFinal);
+        
+            if (item) {
+                item.quantity += quantity;
+            } else {
+                const dataItem = data.products.find(product => product.id === idFinal);
+                if (dataItem) {
+                    cart.push({ id: idFinal, quantity, ...dataItem });
+                } else {
+                    alert("Sản phẩm không tồn tại!");
+                    return;
+                }
+            }
+        
+            // Lưu vào localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+        
+            // Cập nhật giao diện giỏ hàng
+            rederCart2();
+        
+            alert('Đã thêm vào giỏ hàng');
+        });
         
     }
 };
@@ -291,49 +320,6 @@ const innerLeftBottom = async () => {
 
     if (innerBottomElement) {
         innerBottomElement.innerHTML = innerBottomTemplate;
-
-        const addToCartBtn = document.querySelector('.inner-button-add');
-        const quantityInput = document.getElementById('quantity');
-        const decreaseBtn = document.getElementById('decrease');
-        const increaseBtn = document.getElementById('increase');
-
-        decreaseBtn.addEventListener('click', () => {
-            const value = parseInt(quantityInput.value);
-            if (value > 1) {
-                quantityInput.value = value - 1;
-            } else {
-                quantityInput.value = 1;
-            }
-        });
-
-        increaseBtn.addEventListener('click', () => {
-            const value = parseInt(quantityInput.value);
-            quantityInput.value = value + 1;
-            quantity = value + 1;
-        });
-
-        addToCartBtn.addEventListener('click', () => {
-            const quantity = parseInt(quantityInput.value);
-            const cart = JSON.parse(localStorage.getItem("cart")) || [];
-            const item = cart.find(item => item.id === idFinal);
-
-            if (item) {
-                if (quantity > 0) {
-                    item.quantity += quantity;
-                    alert('Đã thêm vào giỏ hàng');
-                } else {
-                    alert('Vui lòng chọn số lượng sản phẩm lớn hơn 0');
-                }
-            } else {
-                const dataItem = data.products.find(item => item.id === idFinal);
-                cart.push({ id: idFinal, quantity, ...dataItem });
-                alert('Đã thêm vào giỏ hàng');
-            }
-
-            localStorage.setItem("cart", JSON.stringify(cart));
-            rederCart2();
-        });
-
     }
 };
 innerLeftBottom();
