@@ -183,7 +183,7 @@ const section1 = () => {
             if (!validateEmail(email)) {
                 alert('Email không hợp lệ');
                 return;
-            } else if (userData.email === email) {
+            } else if (userData && userData.email === email) {
                 alert('Email đã tồn tại');
                 return;
                 
