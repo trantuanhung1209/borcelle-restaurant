@@ -173,33 +173,45 @@ const section1 = () => {
         const form = section1.querySelector('.inner-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const fullName = form.fullName.value;
-            const email = form.email.value;
-            console.log(email);
-            const phoneNumber = form.phoneNumber.value;
-            const password = form.password.value;
-            const userData = JSON.parse(localStorage.getItem('userData'));
+            
+            const fullName = form.fullName.value.trim();
+            const email = form.email.value.trim();
+            const phoneNumber = form.phoneNumber.value.trim();
+            const password = form.password.value.trim();
 
             if (!validateEmail(email)) {
                 alert('Email không hợp lệ');
                 return;
-            } else if (userData && userData.email === email) {
+            }
+
+            // Lấy danh sách người dùng từ localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Kiểm tra email đã tồn tại chưa
+            const userExists = users.some(user => user.email === email);
+            if (userExists) {
                 alert('Email đã tồn tại');
                 return;
-                
-            } else {
-                const newUser = {
-                    fullName: fullName,
-                    email: email,
-                    phoneNumber: phoneNumber,
-                    password: password
-                };
-                localStorage.setItem('userData', JSON.stringify(newUser));
-                alert('Đăng ký thành công');
-                window.location.href = '../home/';
-                localStorage.setItem('isLogin', true);
             }
+
+            // Thêm người dùng mới
+            const newUser = {
+                fullName,
+                email,
+                phoneNumber,
+                password
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Đăng ký thành công');
+            localStorage.setItem('isLogin', 'true');
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+            window.location.href = '../home/';
         });
+
     }
 }
 section1();
