@@ -102,6 +102,7 @@ function validateEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
+
 const section1 = () => {
     const section1 = mainElement.querySelector('.section-1');
     const section1Template = `
@@ -177,25 +178,26 @@ const section1 = () => {
             const phoneNumber = form.phoneNumber.value;
             const password = form.password.value;
             const userData = JSON.parse(localStorage.getItem('userData'));
+            console.log(userData);
 
-            if (fullName && validateEmail(email) && phoneNumber && password) { 
-                if (email === userData.email) {
-                    alert('Email đã tồn tại');
-                } else {
-                    const newUser = {
-                        fullName: fullName,
-                        email: email,
-                        phoneNumber: phoneNumber,
-                        password: password
-                    };
-                    localStorage.setItem('userData', JSON.stringify(newUser));
-                    alert('Đăng ký thành công');
-                    window.location.href = '../home/';
-                    localStorage.setItem('isLogin', true);
-                }
-
+            if (!validateEmail(email)) {
+                alert('Email không hợp lệ');
+                return;
+            } else if (userData.email === email) {
+                alert('Email đã tồn tại');
+                return;
+                
             } else {
-                alert('Vui lòng điền đầy đủ thông tin');
+                const newUser = {
+                    fullName: fullName,
+                    email: email,
+                    phoneNumber: phoneNumber,
+                    password: password
+                };
+                localStorage.setItem('userData', JSON.stringify(newUser));
+                alert('Đăng ký thành công');
+                window.location.href = '../home/';
+                localStorage.setItem('isLogin', true);
             }
         });
     }
