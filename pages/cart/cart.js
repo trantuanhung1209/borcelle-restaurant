@@ -16,12 +16,6 @@ const getTotalPrice2 = (cart) => {
     cart.forEach(item => {
         total += item.price * item.quantity;
     });
-    if (total > 200000) {
-        total = total - (total * 0.1);
-    }
-    if (total > 500000) {
-        total = total - (total * 0.2);
-    }
     return total.toLocaleString();
 };
 
