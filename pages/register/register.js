@@ -175,10 +175,10 @@ const section1 = () => {
             e.preventDefault();
             const fullName = form.fullName.value;
             const email = form.email.value;
+            console.log(email);
             const phoneNumber = form.phoneNumber.value;
             const password = form.password.value;
             const userData = JSON.parse(localStorage.getItem('userData'));
-            console.log(userData);
 
             if (!validateEmail(email)) {
                 alert('Email không hợp lệ');
