@@ -198,6 +198,10 @@ const header = async () => {
         const headerTemplate = `
             <div class="container">
                 <div class="inner-wrap">
+                    <div class="inner-menu-res">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
                     <div class="inner-logo">
                         <a href="../../pages/home/">
                             <img src="../../assets/images/logo/logo_restaurant_2.svg" alt="Borcelle restaurant">
@@ -323,6 +327,19 @@ const header = async () => {
                 });
             }
             // end cart
+
+            // menu responsive
+            const innerMenuRes = document.querySelector(".inner-menu-res");
+            const innerMenu = document.querySelector(".inner-menu");
+            innerMenuRes.addEventListener("click", () => {
+                innerMenu.style.display = innerMenu.style.display === "block" ? "none" : "block";
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!innerMenu.contains(event.target) && !innerMenuRes.contains(event.target)) {
+                    innerMenu.style.display = "none";
+                }
+            });
         }
     } catch (error) {
         console.error("Failed to fetch menu data:", error);

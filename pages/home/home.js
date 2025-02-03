@@ -300,7 +300,7 @@ const section4 = async () => {
             </div>
 
             <div class="flex items-center justify-center mb-[16px]">
-                <ul class="flex items-center gap-[10px] text-center ">
+                <ul class="menu-option flex items-center gap-[10px] text-center ">
                     ${dataMenuSection4.map(item => `
                         <li class="p-[10px] border-[1px] border-white text-white rounded-[8px] cursor-pointer hover:bg-button" tag=${item.tag}>
                             <span title="${item.title}">
