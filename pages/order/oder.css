@@ -105,6 +105,10 @@
                         width: 50%;
                         margin-bottom: 20px;
 
+                        @media screen and (max-width: 575.98px) {
+                            width: 100%;
+                        }
+
                         fieldset {
                             outline: none;
                         }
