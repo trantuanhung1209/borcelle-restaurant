@@ -332,12 +332,12 @@ const header = async () => {
             const innerMenuRes = document.querySelector(".inner-menu-res");
             const innerMenu = document.querySelector(".inner-menu");
             innerMenuRes.addEventListener("click", () => {
-                innerMenu.style.display = innerMenu.style.display === "block" ? "none" : "block";
+                innerMenu.classList.toggle("active");
             });
 
             document.addEventListener("click", (event) => {
                 if (!innerMenu.contains(event.target) && !innerMenuRes.contains(event.target)) {
-                    innerMenu.style.display = "none";
+                    innerMenu.classList.remove("active");
                 }
             });
         }

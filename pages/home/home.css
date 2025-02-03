@@ -57,6 +57,12 @@
 
 .section-1 {
     animation: wave 1s ease-out forwards;
+
+    @media screen and (max-width: 767.98px) {
+        p.font-dancing {
+            font-size: 14px;
+        }
+    }
 }
 
 @keyframes wave {
@@ -73,6 +79,7 @@
         transform: scale(1);
     }
 }
+/* end section 1 */
 
 /* section 2 */
 .button-block {
@@ -158,6 +165,23 @@
 /* section 3 */
 .section-3 {
 
+    .inner-title {
+
+        @media screen and (max-width: 767.98px) {
+            text-align: center;
+            
+            h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media screen and (max-width: 575.98px) {
+            h2 {
+                font-size: 32px;
+            }
+        }
+    }
+
     @media screen and (max-width: 991.98px) {
         .carousel {
             display: flex;
@@ -206,6 +230,12 @@
                 font-size: 36px;
             }
         }
+
+        @media screen and (max-width: 575.98px) {
+            h2 {
+                font-size: 32px;
+            }
+        }
     }
 
     .menu-option {
@@ -241,6 +271,20 @@
         @media screen and (max-width: 767.98px) {
             .product-item {
                 width: calc((100% - 60px) / 2);
+            }
+        }
+
+        @media screen and (max-width: 575.98px) {
+            .product-item {
+
+                .product-action {
+                    left: 0;
+                }
+
+                .button {
+                    top: 100px;
+                    right: 10%;
+                }
             }
         }
     }
@@ -325,6 +369,29 @@
             }
         }
     }
+
+    @media screen and (max-width: 575.98px) {
+        .carousel {
+            gap: 30px;
+            .carousel-item {
+                height: 333px;
+
+                .product-item {
+
+                    padding-bottom: 0;
+            
+                    .product-action {
+                        left: 0;
+                    }
+        
+                    .button {
+                        top: 100px;
+                        right: 10%;
+                    }
+                }
+            }
+        }
+    }
 }
 /* end section 5 */
 
@@ -354,6 +421,22 @@
             }
         }
     }
+
+    @media screen and (max-width: 575.98px) {
+        .inner-wrap {
+
+            .inner-item {
+
+                .inner-content {
+                    a {
+                        span {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 /* end secion 6 */
 
@@ -379,6 +462,20 @@
                 .content {
                     h3 {
                         font-size: 36px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 575.98px) {
+        .inner-wrap {
+
+            .inner-item {
+
+                .content {
+                    h3 {
+                        font-size: 26px;
                     }
                 }
             }
