@@ -234,5 +234,16 @@
                 }
             }
         }
+
+        @media screen and (max-width: 1680px) {
+            .inner-left {
+                width: 100%;
+            }
+
+            .inner-right {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
     }
 }

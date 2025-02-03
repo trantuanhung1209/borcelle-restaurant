@@ -128,7 +128,7 @@ const innerLeft = async () => {
             ${data.map(item => `
             <div class="inner-item" id=${item.id}>
                 <div class="inner-thumb">
-                    <a href="#" title='${item.title}'>
+                    <a href="../article/?id=${item.id}" title='${item.title}'>
                         <img src=${item.image} alt='${item.title}'>
                     </a>
                 </div>

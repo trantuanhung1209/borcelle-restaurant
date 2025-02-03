@@ -20,6 +20,44 @@
     color: white;
 }
 
+.inner-wrap {
+
+    @media screen and (max-width: 991.98px) {
+        flex-wrap: wrap !important;
+
+        .inner-left {
+            width: 100% !important;
+        }
+
+        .inner-right {
+            width: 100% !important;
+        }
+    }
+
+    .inner-right {
+
+        @media screen and (max-width: 767.98px) {
+            
+            .inner-list-article {
+
+                .inner-item {
+                    width: calc((100% - 20px) / 2);
+                }
+            }
+        }
+
+        @media screen and (max-width: 576.98px) {
+            
+            .inner-list-article {
+
+                .inner-item {
+                    width: calc((100% - 20px) / 1);
+                }
+            }
+        }
+    }
+}
+
 .inner-blog {
     border: 1px solid var(--background-color-button);
     border-radius: 8px;

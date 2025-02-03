@@ -231,6 +231,20 @@
                     }
                 }
             }
+
+            @media screen and (max-width: 767.98px) {
+                .inner-wrap {
+                    flex-wrap: wrap;
+
+                    .inner-image {
+                        width: 100% !important;
+                    }
+
+                    .inner-content {
+                        width: 100% !important;
+                    }
+                }
+            }
         }
 
         .inner-bottom {
@@ -425,6 +439,21 @@
                 &:hover {
                     color: rgba(227, 227, 180, 0.724);
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1199.98px) {
+        
+        .inner-wrap {
+            flex-wrap: wrap;
+
+            .inner-left {
+                width: 100%;
+            }
+
+            .inner-right {
+                width: 100%;
             }
         }
     }

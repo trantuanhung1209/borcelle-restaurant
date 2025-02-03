@@ -682,6 +682,20 @@ const innerLeft = async () => {
             });
         }
 
+        const innerFilterRes = document.querySelector('.inner-filter-res');
+        if (innerFilterRes) {
+            innerFilterRes.addEventListener('click', (e) => {
+                const innerFilter = mainElement.querySelector('.inner-filter');
+                innerFilter.classList.toggle('active');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            const innerFilter = mainElement.querySelector('.inner-filter');
+            if (innerFilter && !innerFilter.contains(e.target) && !innerFilterRes.contains(e.target)) {
+                innerFilter.classList.remove('active');
+            }
+        });
     }
 }
 innerLeft();

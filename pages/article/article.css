@@ -86,6 +86,22 @@
     }
 }
 
+.inner-wrap {
+
+    @media screen and (max-width: 991.98px) {
+        flex-wrap: wrap !important;
+
+        .inner-left {
+            width: 100% !important;
+            margin-bottom: 20px;
+        }
+
+        .inner-right {
+            width: 100% !important;
+        }
+    }
+}
+
 .inner-article {
 
     .inner-title {

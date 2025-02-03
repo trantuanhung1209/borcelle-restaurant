@@ -171,6 +171,53 @@
 
 .section-1 {
 
+    .inner-filter-res {
+        display: none;
+    }
+
+    @media screen and (max-width: 991.98px) {
+
+        .inner-filter-res {
+            display: block;
+            position: absolute;
+            top: 16%;
+            right: 0;
+            padding: 10px;
+            background-color: var(--background-color-button);
+            box-shadow: 1px 3px 6px #888888;
+            border-radius: 8px;
+
+            i {
+                font-size: 20px;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        
+        .inner-filter {
+            display: none !important;
+            position: absolute;
+            top: 30%;
+            right: 50px;
+            z-index: 10;
+            height: 100%;
+            background-color: var(--background-color-primary);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .inner-filter.active {
+            display: flex !important;
+        }
+
+        .inner-right {
+            width: 100% !important;
+        }
+    }
+}
+
+.section-1 {
+
     .inner-products {
         width: 100%;
 
@@ -296,6 +343,15 @@
                     bottom: 30%;
                     left: 32%;
 
+                    @media screen and (max-width: 1399.98px) {
+                        bottom: 32%;
+                    }
+
+                    @media screen and (max-width: 1199.98px) {
+                        bottom: 36%;
+                        left: 28%;
+                    }
+
                     .inner-cart {
                         width: 82px;
                         height: 82px;
@@ -411,9 +467,27 @@
                     &:hover {
                         background-color: #a37b44;
                     }
+
+                    @media screen and (max-width: 1199.98px) {
+                        left: 18%;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 767.98px) {
+                .inner-product-item {
+                    width: calc((100% - 80px) / 3);
+                }
+                
+            }
+
+            @media screen and (max-width: 575.98px) {
+                .inner-product-item {
+                    width: calc((100% - 40px) / 2);
                 }
             }
         }
+        
     }
 
     .inner-pagination {

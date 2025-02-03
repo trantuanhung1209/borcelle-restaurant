@@ -72,5 +72,19 @@
                 }
             }
         }
+
+        @media screen and (max-width: 991.98px) {
+            flex-wrap: wrap;
+            gap: 0;
+    
+            .inner-desc {
+                width: 100%;
+            }
+    
+            .inner-orderDetail {
+                width: 100%;
+            }
+            
+        }
     }
 }

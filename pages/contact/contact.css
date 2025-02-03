@@ -91,6 +91,22 @@
             padding: 6px 20px;
         }
     }
+
+    @media screen and (max-width: 991.98px) {
+
+        .inner-wrap {
+            flex-wrap: wrap !important;
+
+            .inner-left {
+                width: 100% !important;
+                margin-bottom: 20px;
+            }
+
+            .inner-right {
+                width: 100% !important;
+            }
+        }
+    }
 }
 
 .section-popup {
@@ -184,6 +200,14 @@
                     }
                 }
             }
+        }
+
+        @media screen and (max-width: 991.98px) {
+            width: 400px;
+        }
+
+        @media screen and (max-width: 767.98px) {
+            width: 300px;
         }
     }
 }

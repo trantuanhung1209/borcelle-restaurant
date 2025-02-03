@@ -36,6 +36,24 @@
             justify-content: center;
             align-items: center;
 
+            .col-6 {
+                @media screen and (max-width: 1199.98px) {
+                    width: 50% !important;
+                }
+    
+                @media screen and (max-width: 991.98px) {
+                    width: 65% !important;
+                }
+    
+                @media screen and (max-width: 767.98px) {
+                    width: 70% !important;
+                }
+    
+                @media screen and (max-width: 575.98px) {
+                    width: 90% !important;
+                }
+            }
+
             .inner-title {
                 display: flex;
                 align-items: center;
@@ -57,6 +75,22 @@
                     font-weight: 500;
                     color: white;
                     font-family: var(--font-title);
+
+                    @media screen and (max-width: 1199.98px) {
+                        font-size: 40px;
+                    }
+
+                    @media screen and (max-width: 991.98px) {
+                        font-size: 40px;
+                    }
+        
+                    @media screen and (max-width: 767.98px) {
+                        font-size: 24px;
+                    }
+        
+                    @media screen and (max-width: 575.98px) {
+                        font-size: 22px;
+                    }
                 }
             }
 
@@ -80,6 +114,10 @@
                             font-weight: 700;
                             color: white;
                             padding-bottom: 5px;
+
+                            @media screen and (max-width: 575.98px) {
+                                font-size: 12px;
+                            }
                         }
 
                         input {
@@ -92,6 +130,10 @@
                             padding: 1px 10px;
                             outline: none;
                             transition: all 0.3s;
+
+                            @media screen and (max-width: 575.98px) {
+                                font-size: 14px;
+                            }
                         }
                     }
 
@@ -154,6 +196,11 @@
         border-radius: 8px;
         width: 500px;
         overflow: hidden;
+        
+        @media screen and (max-width: 575.98px) {
+            width: 400px;
+            
+        }
 
         .inner-popup-content {
 

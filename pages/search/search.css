@@ -149,6 +149,14 @@
                     bottom: 30%;
                     left: 32%;
 
+                    @media screen and (max-width: 1399.98px) {
+                        bottom: 32%;
+                    }
+
+                    @media screen and (max-width: 1199.98px) {
+                        bottom: 36%;
+                    }
+
                     .inner-cart {
                         width: 82px;
                         height: 82px;
@@ -264,6 +272,22 @@
                     &:hover {
                         background-color: #a37b44;
                     }
+
+                    @media screen and (max-width: 1199.98px) {
+                        left: 18%;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 991.98px) {
+                .inner-product-item {
+                    width: calc((100% - 40px) / 3);
+                }
+            }
+
+            @media screen and (max-width: 767.98px) {
+                .inner-product-item {
+                    width: calc((100% - 20px) / 2);
                 }
             }
         }

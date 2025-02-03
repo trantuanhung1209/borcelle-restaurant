@@ -21,6 +21,7 @@
 }
 
 .section-1 {
+    overflow-x: hidden;
 
     .row {
         justify-content: center;
@@ -29,6 +30,22 @@
             background-color: rgba(255, 255, 255, 0.06);
             border-radius: 8px;
             padding: 24px;
+
+            @media screen and (max-width: 1199.98px) {
+                width: 50% !important;
+            }
+
+            @media screen and (max-width: 991.98px) {
+                width: 65% !important;
+            }
+
+            @media screen and (max-width: 767.98px) {
+                width: 70% !important;
+            }
+
+            @media screen and (max-width: 575.98px) {
+                width: 90% !important;
+            }
 
             .inner-menu {
                 list-style: none;
