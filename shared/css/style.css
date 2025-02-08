@@ -590,7 +590,11 @@ a {
     justify-content: start;
     align-items: center;
     gap: 50px;
-    flex-wrap: wrap;
+
+    @media screen and (max-width: 991.98px) {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 }
 
 .footer .inner-left {
