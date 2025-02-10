@@ -356,29 +356,28 @@ const section4 = async () => {
             listMenu[0].classList.add('bg-button');
 
             listMenu.forEach((item, index) => {
-                item.addEventListener('click', () => {
+                item.addEventListener('click', async () => { // Đổi thành async function
                     listMenu.forEach(menu => {
                         menu.classList.remove('bg-button');
                     });
                     item.classList.add('bg-button');
-
+            
                     const tag = item.getAttribute('tag');
-
+            
                     const listProducts = document.querySelector('.section-4 .list-products');
-                    const listItem = [];
                     listProducts.innerHTML = 'Đang tải...';
-                    setTimeout(() => {
-                        getProductsByTag(tag).then(data => {
-                            data.forEach(item => {
-                                listItem.push(`
+            
+                    setTimeout(async () => {
+                        try {
+                            const data = await getProductsByTag(tag); // Chờ dữ liệu về
+                            const listItem = data.map(item => `
                                 <div class="product-item px-[7px] pt-[7px] pb-[45px] bg-white" style="box-shadow: 5px 10px #888888;">
                                     <div class="thumbnail relative">
                                         <a href="../dishDetails/?id=${item.id}" class="block flex items-center justify-center">
                                             <img src="${item.image}" alt='${item.name}' class="w-full h-full object-cover" loading="lazy">
                                         </a>
                                         <div class="product-action flex items-center gap-[20px] pl-[36px] absolute left-[20%] bottom-[-32px]">
-                                            <!-- Nút thêm vào giỏ hàng -->
-                                            <div class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] cursor-pointer" onclick="addToCart(${item.id})" >
+                                            <div class="add-to-cart block w-[82px] h-[82px] bg-button rounded-full flex items-start justify-center pt-[24px] cursor-pointer" onclick="addToCart(${item.id})">
                                                 <i class="fas fa-shopping-cart text-[20px] font-[700] text-white hover:text-primary"></i>
                                             </div>
                                         </div>
@@ -403,13 +402,14 @@ const section4 = async () => {
                                         </a>
                                     </div>
                                 </div>
-                                `);
-                            })
-                        })
+                            `).join('');
+                
+                            listProducts.innerHTML = listItem; // Cập nhật sản phẩm sau khi có dữ liệu
+                        } catch (error) {
+                            listProducts.innerHTML = '<p class="text-white">Không thể tải sản phẩm.</p>';
+                            console.error("Lỗi tải sản phẩm:", error);
+                        }
                     }, 800);
-                    setTimeout(() => {
-                        listProducts.innerHTML = listItem.join('');
-                    }, 1000);
                 });
             });
         }
