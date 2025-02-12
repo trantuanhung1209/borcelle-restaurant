@@ -470,6 +470,7 @@ a {
                         }
 
                         .inner-text {
+                            text-align: start;
 
                             .inner-name {
                                 a {
