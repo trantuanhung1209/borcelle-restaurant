@@ -11,6 +11,16 @@
     width: 1340px;
     margin: 0 auto;
 
+    @media screen and (max-width: 1449.98px) {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    @media screen and (max-width: 1359.98px) {
+        width: 100%;
+        padding: 0 20px;
+    }
+
     @media screen and (max-width: 991.98px) {
         width: 100%;
         padding: 0 20px;

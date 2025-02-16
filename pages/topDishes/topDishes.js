@@ -261,7 +261,7 @@ const innerRight = async () => {
         <div class="inner-products">
             <div class="inner-top">
                 <h2 class="inner-title">
-                    Tất cả món ăn
+                    Các món ăn nổi bật 
                 </h2>
                 ${innerArrangeHtml()}
             </div>
