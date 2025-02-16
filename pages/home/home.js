@@ -338,7 +338,7 @@ const section4 = async () => {
                             </h3>
                             <div class="product-price">
                                 <span class="text-[18px] text-[#d83a3a] font-[600]">${item.price.toLocaleString()}₫</span>
-                                ${item.old_price ? `<span class="text-[12px] text-[#969696] font-[500] line-through">${item.old_price.toLocaleString()}₫</span>` : ''}
+                                ${item.originalPrice ? `<span class="text-[12px] text-[#969696] font-[500] line-through">${item.originalPrice.toLocaleString()}₫</span>` : ''}
                             </div>
                             <a href="../dishDetails/?id=${item.id}" class="button absolute top-[123%] right-[26%]">
                                 Xem chi tiết
