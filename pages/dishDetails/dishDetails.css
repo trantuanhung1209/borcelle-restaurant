@@ -55,7 +55,8 @@
                     .inner-old-price {
                         font-size: 16px;
                         font-weight: 500;
-                        color: white;
+                        color: rgb(180, 180, 180);
+                        text-decoration: line-through;
                         margin: 0;
                     }
 
