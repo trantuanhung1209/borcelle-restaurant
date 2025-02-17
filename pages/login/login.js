@@ -171,12 +171,15 @@ const section1 = () => {
                 return;
             }
 
-            const userData = JSON.parse(localStorage.getItem('userData'));
+            const userData = JSON.parse(localStorage.getItem('users'));
             if (userData) {
-                if (email === userData.email && password === userData.password) {
+                const user = userData.find(user => email === user.email && password === user.password);
+                if (user) {
                     alert('Đăng nhập thành công');
-                    window.location.href = '../account/';
                     localStorage.setItem("isLogin", true);
+                    window.location.href = `../account/`;
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('isLogin', true);
                 } else {
                     alert('Email hoặc mật khẩu không chính xác');
                 }

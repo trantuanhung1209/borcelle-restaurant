@@ -75,7 +75,7 @@ const mainElement = document.querySelector('.main');
 
 // ------------breadcumb--------------
 const breadCumb = () => {
-    let userData = JSON.parse(localStorage.getItem("userData"));
+    let userData = JSON.parse(localStorage.getItem("currentUser"));
     const breadCumbElement = mainElement.querySelector('.inner-breadcumb');
     const template = `
     <div class="container ">
@@ -102,7 +102,7 @@ breadCumb();
 
 // ------------section 1--------------
 const section1 = () => {
-    let userData = JSON.parse(localStorage.getItem("userData"));
+    let userData = JSON.parse(localStorage.getItem("currentUser"));
     const section1Element = mainElement.querySelector('.section-1');
     const section1Template = `
     <div class="container">
