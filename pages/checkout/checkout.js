@@ -242,9 +242,9 @@ const innerRight = () => {
     </div>
 
     <div class="inner-action">
-        <a href="../cart/">
+        <a href="../menu/">
             <i class="fa-solid fa-chevron-left"></i>
-            Quay lại giỏ hàng
+            Quay lại mua hàng
         </a>
         <button class="inner-button">Đặt hàng</button>
     </div>
