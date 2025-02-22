@@ -190,7 +190,7 @@ const innerLeft = () => {
 
 
         if (isLoginFinal) {
-            const user = JSON.parse(localStorage.getItem('userData'));
+            const user = JSON.parse(localStorage.getItem('currentUser'));
             emailElement.value = user.email;
             fullNameElement.value = user.fullName;
             phoneNumberElement.value = user.phoneNumber;
