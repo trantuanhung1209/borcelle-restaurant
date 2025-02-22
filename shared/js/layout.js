@@ -52,7 +52,7 @@ const renderProductSearch = async (content) => {
                             <a href="../dishDetails/?id=${item.id}">${item.name}</a>
                         </h3>
                         <p class="inner-price">
-                            ${item.price}đ
+                            ${item.price.toLocaleString()}đ
                         </p>
                     </div>
                 </div>
