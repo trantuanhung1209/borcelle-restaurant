@@ -310,6 +310,15 @@ const header = async () => {
                     window.location.href = `../search/?content=${content.value}`;
                 });
 
+                // Xử lý sự kiện nhấn Enter
+                const contentInput = innerFormSearch.querySelector("input[name='content']");
+                contentInput.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        window.location.href = `../search/?content=${contentInput.value}`;
+                    }
+                });
+
                 innerFormSearch.addEventListener("input", (e) => {
                     e.preventDefault();
                     const content = innerFormSearch.querySelector("input[name='content']");
