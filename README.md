@@ -1,7 +1,7 @@
 # Borcelle Restaurants - Website Dự án
 
 ## Giới Thiệu
-Borcelle Restaurants là một nhà hàng cao cấp chuyên cung cấp những món ăn ngon nhất từ nguyên liệu tươi sống, kết hợp giữa phong cách ẩm thực truyền thống và hiện đại.
+Borcelle Restaurants là một nhà hàng cao cấp chuyên cung cấp những món ăn ngon nhất từ nguyên liệu tươi sống, kết hợp giữa phong cách âm thực truyền thống và hiện đại. Chúng tôn trọng hương vị tự nhiên, mang đến trải nghiệm ăn uống độc đáo và tinh tế.
 
 ## Cơ Cấu Dự Án
 Dự án website của Borcelle Restaurants được thiết kế theo cấu trúc dễ hiểu, gồm nhiều thư mục và file phục vụ việc phát triển và bảo trì.
@@ -38,3 +38,21 @@ Chứa các tài nguyên chung:
 1. Clone dự án về máy:
    ```sh
    git clone https://github.com/trantuanhung1209/borcelle-restaurant
+   ```
+2. Mở `index.html` trên trình duyệt hoặc chạy với một server cục bộ.
+
+## Công Nghệ Sử Dụng
+- HTML, CSS, JavaScript
+- JSON cho dữ liệu
+- Firebase (nếu có tích hợp backend)
+
+## Đóng Góp
+Nếu bạn muốn đóng góp cho dự án, hãy fork repository, thực hiện chỉnh sửa và gửi pull request.
+
+## Liên Hệ
+Nếu có bất kỳ thắc mắc nào, vui lòng liên hệ với chúng tôi qua email: `tuanhungvip12@gmail.com`
+
+---
+Cảm ơn bạn đã sử dụng Borcelle Restaurants! Chúc bạn có một trải nghiệm tuyệt vời.
+
+
